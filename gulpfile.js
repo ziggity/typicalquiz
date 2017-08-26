@@ -14,7 +14,8 @@ var gulp = require('gulp'),
 gulp.task('serve', ['css'], function() {
 
     browserSync.init({
-        server: "output"
+        server: "output",
+        port: 2380
         // or
         // proxy: 'yourserver.dev'
     });
