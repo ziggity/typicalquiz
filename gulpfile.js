@@ -7,14 +7,21 @@ var gulp = require('gulp'),
 	htmlmin = require('gulp-htmlmin');
 	map = require('gulp-sourcemaps');
 	del = require('del'),
-	connect = require('gulp-connect');
+	connect = require('gulp-connect'),
+	browserSync = require('browser-sync').create();
 
-gulp.task("connect", function(){
-	connect.server({
-		root: '.',
-		port: 2380,
-		livereload: true
-	})
+// Static Server + watching scss/html files
+gulp.task('serve', ['css'], function() {
+
+    browserSync.init({
+        server: "output"
+        // or
+        // proxy: 'yourserver.dev'
+    });
+    gulp.watch("*.html",["html"]).on('change', browserSync.reload);
+	gulp.watch("assets/css/*",["css"])
+	gulp.watch("assets/scss/*",["sass"])
+	gulp.watch("assets/js/*",["js"])
 });
 
 // concat & minify css
@@ -25,8 +32,29 @@ gulp.task("css",function(){
 	.pipe(cssnano({discardComments: {removeAll: true}}))
 	.pipe(map.write("output/assets"))
 	.pipe(gulp.dest('output/assets/css'))
-	.pipe(connect.reload())
+	.pipe(browserSync.stream())
 });
+
+// build sass
+gulp.task('sass', ['cleanCSS'],function() {
+  return gulp.src("assets/scss/*.scss")
+      .pipe(map.init())
+      .pipe(sass())
+      .pipe(cssnano({discardComments: {removeAll: true}}))
+      .pipe(map.write("/"))
+      .pipe(gulp.dest('output/css'))
+      .pipe(browserSync.stream());
+});
+
+
+gulp.task('clean', function() {
+	del(['output']); // 'output/css/*.css*', 'output/js/app*.js*'
+});
+
+gulp.task('cleanCSS', function() {
+	del(['output/css']); // 'output/css/*.css*', 'output/js/app*.js*'
+});
+
 
 // concat & minify js
 gulp.task("js",function(){
@@ -34,9 +62,9 @@ gulp.task("js",function(){
 	.pipe(map.init())
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
-	.pipe(map.write("output/assets"))
+	.pipe(map.write("/"))
 	.pipe(gulp.dest('output/assets/js'))
-	.pipe(connect.reload())
+	.pipe(browserSync.stream())
 });
 
 // copy misc. files to output
@@ -46,11 +74,11 @@ gulp.task("copy",function(){
 });
 
 //minify html
-gulp.task("html", ["clean"],function(){
+gulp.task("html", function(){
 	gulp.src(["*.html"])
 	.pipe(htmlmin({collapseWhitespace: true}))
 	.pipe(gulp.dest("output"))
-	.pipe(connect.reload())
+	//.pipe(browserSync.stream())
 });
 
 gulp.task("log",function(){
@@ -60,28 +88,14 @@ gulp.task("log",function(){
 // rolling my own default task
 gulp.task("build", ["clean","css","js","copy","html","log"]);
 
-gulp.task("default", ["clean","css","js","copy","html","log","connect"]);
+gulp.task("default", ["css","js","copy","html","log","serve"]);
 
-// look for changes
+// look for changes. DELETE this if serve task works!
 gulp.task("watch", function(){
-	gulp.watch("*.html",["html"])
+	gulp.watch("*.html").on('change', browserSync.reload)
 	gulp.watch("assets/css/*",["css"])
 	gulp.watch("assets/js/*",["js"])
 	//gulp.watch('assets/scss/**/*.scss', ['sass'])
 });
 
-// build sass
-gulp.task('sass', function() {
-  return gulp.src("assets/scss/app.scss")
-      .pipe(maps.init())
-      .pipe(sass())
-      .pipe(maps.write('./'))
-      .pipe(gulp.dest('output/css'))
-      .pipe(connect.reload());
-});
-
-
-gulp.task('clean', function() {
-	del(['output']); // 'output/css/*.css*', 'output/js/app*.js*'
-});
 
