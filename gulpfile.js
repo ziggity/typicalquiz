@@ -7,7 +7,6 @@ var gulp = require('gulp'),
 	htmlmin = require('gulp-htmlmin');
 	map = require('gulp-sourcemaps');
 	del = require('del'),
-	connect = require('gulp-connect'),
 	browserSync = require('browser-sync').create();
 
 // Static Server + watching scss/html files
@@ -96,7 +95,7 @@ gulp.task("watch", function(){
 	gulp.watch("*.html").on('change', browserSync.reload)
 	gulp.watch("assets/css/*",["css"])
 	gulp.watch("assets/js/*",["js"])
-	//gulp.watch('assets/scss/**/*.scss', ['sass'])
+	gulp.watch('assets/scss/**/*.scss', ['sass'])
 });
 
 
