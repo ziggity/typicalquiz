@@ -15,13 +15,11 @@ gulp.task('serve', ['css'], function() {
     browserSync.init({
         server: "output",
         port: 2380
-        // or
-        // proxy: 'yourserver.dev'
     });
     gulp.watch("*.html",["html"]).on('change', browserSync.reload);
-	gulp.watch("assets/css/*",["css"])
-	gulp.watch("assets/scss/*",["sass"])
-	gulp.watch("assets/js/*",["js"])
+	gulp.watch("assets/css/*",["css"]).on('change', browserSync.reload);
+	gulp.watch("assets/scss/*",["sass"]).on('change', browserSync.reload);
+	gulp.watch("assets/js/*",["js"]).on('change', browserSync.reload);
 });
 
 // concat & minify css
@@ -42,8 +40,20 @@ gulp.task('sass', ['cleanCSS'],function() {
       .pipe(sass())
       .pipe(cssnano({discardComments: {removeAll: true}}))
       .pipe(map.write("/"))
-      .pipe(gulp.dest('output/css'))
+      .pipe(gulp.dest('output/assets/css'))
       .pipe(browserSync.stream());
+});
+
+// concat & minify js
+gulp.task("js",function(){
+	//gulp.src(["assets/js/jquery.min.js","assets/js/semantic.min.js","assets/js/canvasjs.min.js","assets/js/scripts.js"])
+	gulp.src("assets/js/*.js")
+	.pipe(map.init())
+	.pipe(concat('scripts.min.js'))
+	.pipe(uglify())
+	.pipe(map.write("/"))
+	.pipe(gulp.dest('output/assets/js'))
+	.pipe(browserSync.stream())
 });
 
 
@@ -55,17 +65,6 @@ gulp.task('cleanCSS', function() {
 	del(['output/css']); // 'output/css/*.css*', 'output/js/app*.js*'
 });
 
-
-// concat & minify js
-gulp.task("js",function(){
-	gulp.src(["assets/js/jquery.min.js","assets/js/semantic.min.js","assets/js/canvasjs.min.js","assets/js/scripts.js"])
-	.pipe(map.init())
-	.pipe(concat('scripts.min.js'))
-	.pipe(uglify())
-	.pipe(map.write("/"))
-	.pipe(gulp.dest('output/assets/js'))
-	.pipe(browserSync.stream())
-});
 
 // copy misc. files to output
 gulp.task("copy",function(){
