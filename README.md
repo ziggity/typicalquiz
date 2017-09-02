@@ -1,1 +1,1 @@
-# gulp-template
+# Gregor's gulp-template
