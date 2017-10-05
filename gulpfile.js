@@ -1,20 +1,20 @@
 var gulp = require('gulp'),
-	sass = require("gulp-sass"),
-	uglify = require("gulp-uglify"), // CSS + JS
-	concat = require("gulp-concat"),
-	gutil = require('gulp-util'),
-	cssnano = require('gulp-cssnano'), // if I'm working with regular CSS
-	htmlmin = require('gulp-htmlmin');
-	map = require('gulp-sourcemaps');
+	sass = require("gulp-sass"), // SASS
+	uglify = require("gulp-uglify"), // JS
+	concat = require("gulp-concat"), // CSS + JS
+	gutil = require('gulp-util'), // Logging
+	cssnano = require('gulp-cssnano'), // CSS + SASS
+	htmlmin = require('gulp-htmlmin'); // HTML
+	map = require('gulp-sourcemaps'); // CSS + JS
 	del = require('del'),
 	browserSync = require('browser-sync').create();
 
-// Static Server + watching scss/html files
+// Static Server + watching scss/html files. Alternative is http-server -p 2380
 gulp.task('serve', ['css'], function() {
 
     browserSync.init({
         server: "output",
-        port: 2380
+        port: 2380 //my favorite port
     });
     gulp.watch("*.html",["html"]).on('change', browserSync.reload);
 	gulp.watch("assets/css/*",["css"]).on('change', browserSync.reload);
@@ -26,23 +26,23 @@ gulp.task('serve', ['css'], function() {
 // concat & minify css
 gulp.task("css",function(){
 	gulp.src(['assets/css/semantic.min.css','assets/css/style.css'])
-	.pipe(map.init())
-	.pipe(concat('style.min.css'))
-	.pipe(cssnano({discardComments: {removeAll: true}}))
-	.pipe(map.write("output/assets"))
-	.pipe(gulp.dest('output/assets/css'))
-	.pipe(browserSync.stream())
+	.pipe(map.init()) //create sourcemap
+	.pipe(concat('style.min.css')) //combine into single file
+	.pipe(cssnano({discardComments: {removeAll: true}})) //minimize without comments
+	.pipe(map.write("output/assets")) //write sourcemap
+	.pipe(gulp.dest('output/assets/css')) //send completed file
+	.pipe(browserSync.stream()) //update browsersync
 });
 
 // build sass
 gulp.task('sass', ['cleanCSS'],function() {
   return gulp.src("assets/scss/*.scss")
-      .pipe(map.init())
-      .pipe(sass())
-      .pipe(cssnano({discardComments: {removeAll: true}}))
-      .pipe(map.write("/"))
-      .pipe(gulp.dest('output/assets/css'))
-      .pipe(browserSync.stream());
+      .pipe(map.init()) //create sourcemap
+      .pipe(sass()) //initialize sass compiler
+      .pipe(cssnano({discardComments: {removeAll: true}})) //minimize without comments
+      .pipe(map.write("/")) //write sourcemap
+      .pipe(gulp.dest('output/assets/css')) //send completed file
+      .pipe(browserSync.stream()); //update browsersync
 });
 
 // concat & minify js

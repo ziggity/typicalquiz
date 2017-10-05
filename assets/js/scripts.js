@@ -1,3 +1,4 @@
+'use strict'; // no sloppy JS habits allowed here.
 document.addEventListener('DOMContentLoaded', function(){
 	document.getElementById("calculate").addEventListener("click", function(event){
 		event.preventDefault();
