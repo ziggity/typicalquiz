@@ -1,13 +1,15 @@
+// make sure to npm install --save-dev for all of these
 var gulp = require('gulp'),
 	sass = require("gulp-sass"), // SASS
 	uglify = require("gulp-uglify"), // JS
 	concat = require("gulp-concat"), // CSS + JS
 	gutil = require('gulp-util'), // Logging
 	cssnano = require('gulp-cssnano'), // CSS + SASS
-	htmlmin = require('gulp-htmlmin'); // HTML
-	map = require('gulp-sourcemaps'); // CSS + JS
+	htmlmin = require('gulp-htmlmin'), // HTML
+	map = require('gulp-sourcemaps'), // CSS + JS
 	del = require('del'),
-	browserSync = require('browser-sync').create();
+	browserSync = require('browser-sync').create(),
+	ftp = require( 'vinyl-ftp' );
 
 // Static Server + watching scss/html files. Alternative is http-server -p 2380
 gulp.task('serve', ['css'], function() {
@@ -99,3 +101,62 @@ gulp.task("watch", function(){
 });
 
 
+// FTP Info
+// verify values in .bash_profile
+var user = process.env.FTP_USER;
+var password = process.env.FTP_PWD;
+var host = '173.201.63.1';
+var port = 21;
+var localFilesGlob = ['css/*','js/*','img/*','*.html'];//['./**/*'];
+var remoteFolder = '/folder'
+
+// helper function to build an FTP connection based on our configuration
+function getFtpConnection() {
+    return ftp.create({
+        host: host,
+        port: port,
+        user: user,
+        password: password,
+        parallel: 5,
+        log: gutil.log
+    });
+}
+
+/**
+ * FTP deploy task.
+ * Copies the new files to the server
+ *
+ * Usage: `FTP_USER=someuser FTP_PWD=somepwd gulp ftp-deploy`
+ */
+gulp.task('ftp-deploy', function() {
+    var conn = getFtpConnection();
+    gutil.log(conn);
+
+    return gulp.src(localFilesGlob, { base: '.', buffer: false })
+        .pipe( conn.newer( remoteFolder ) ) // only upload newer files
+        .pipe( conn.dest( remoteFolder ) )
+    ;
+});
+
+/**
+ * Watch FTP deploy task.
+ * Watches the local copy for changes and copies the new files to the server whenever an update is detected
+ *
+ * Usage: `FTP_USER=someuser FTP_PWD=somepwd gulp ftp-deploy-watch`
+ */
+gulp.task('ftp-deploy-watch', function() {
+
+    var conn = getFtpConnection();
+
+    gulp.watch(localFilesGlob)
+    .on('change', function(event) {
+      console.log('Changes detected! Uploading file "' + event.path + '", ' + event.type);
+
+      return gulp.src( [event.path], { base: '.', buffer: false } )
+        .pipe( conn.newer( remoteFolder ) ) // only upload newer files
+        .pipe( conn.dest( remoteFolder ) )
+      ;
+    });
+});
+
+// END FTP
