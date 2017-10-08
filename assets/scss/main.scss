@@ -1,7 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans:300');
+
+$mainHighlight : #90D3F3;
+$subTitle : rgba(255,255,255,.5);
+$lightMain: #4E265E;
+$darkMain: #3E1E4B;
+$transWhite: rgba(255,255,255,.2);
+$p1: 10px;
+$boldFont: 'Alfa Slab One';
+
+
 body {
-	background: blue;
-	color: red;
+	background: black;
+	color: white;
+	font-family: 'Open Sans';
+	font-weight: lighter;
 	p {
 		padding: 10px 0px;
+	}
+}
+.container {
+	max-width: 1000px;
+	margin: auto;
+}
+.mainTitle {
+	text-align: center;
+	color: $mainHighlight;
+	font-family: $boldFont;
+	font-weight: normal;
+    letter-spacing: .03em;
+    font-size: 2.5em;
+    margin: 0;
+}
+.subTitle {
+	text-align: center;
+	color: $subTitle;
+	margin: 0;
+}
+.innerTitle {
+	font-size: 18px;
+	font-weight: strong;
+	font-family: $boldFont;
+
+}
+.sectionHeader {
+	color: white;
+	margin: 0;
+}
+
+.topBox {
+	background: $lightMain;
+	padding: $p1;
+}
+
+.lowerBox {
+	background: $darkMain;
+	padding: $p1;
+}
+
+button {
+	border: none;
+	background: $transWhite;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	padding: $p1;
+	&.start {
+		//color: $darkMain;
+		font-weight: bold;
+		width: 100%;
+	    background: #72527e;
+	}
+}
+
+.row {
+	margin-bottom: 20px;
+}
+
+.dropdown {
+	position: relative;
+    display: inline-block;
+    button {
+    	width: 200px;
+    }
+}
+.dropdownList {
+	display: none;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.9);
+    min-width: 200px;
+    box-shadow: 2px 3px 3px 0px rgba(0, 0, 0, 0.48);
+	&.show {display:block;}
+	a {
+	    display: block;
+	    padding: 10px 20px;
+	    color: black;
+	    text-decoration: none;
+	    font-weight: normal;
+	    &:hover {
+	    	background: white;
+    		color: #3f1f4b;
+	    }
 	}
 }
