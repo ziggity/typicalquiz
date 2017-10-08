@@ -128,7 +128,7 @@ function getFtpConnection() {
  *
  * Usage: `FTP_USER=someuser FTP_PWD=somepwd gulp ftp-deploy`
  */
-gulp.task('ftp-deploy', function() {
+gulp.task('ftp', function() {
     var conn = getFtpConnection();
     gutil.log(conn);
 
@@ -144,7 +144,7 @@ gulp.task('ftp-deploy', function() {
  *
  * Usage: `FTP_USER=someuser FTP_PWD=somepwd gulp ftp-deploy-watch`
  */
-gulp.task('ftp-deploy-watch', function() {
+gulp.task('ftp-watch', function() {
 
     var conn = getFtpConnection();
 
