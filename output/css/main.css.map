@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAAA,KACC,iBAAiB,AACjB,SAAU,CAIV,AAND,OAIE,cAAiB,CACjB","file":"main.css","sourcesContent":["body {\n\tbackground: green;\n\tcolor: red;\n\tp {\n\t\tpadding: 10px 0px;\n\t}\n}"]}
