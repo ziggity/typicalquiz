@@ -114,3 +114,15 @@ button {
 	    }
 	}
 }
+
+.close {
+	background: url('../images/close.svg');
+	background-size: contain;
+    height: 20px;
+    width: 20px;
+    float: right;
+    &:hover {
+    	opacity: .5;
+    	cursor: pointer;
+    }
+}

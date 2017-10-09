@@ -1,6 +1,9 @@
 'use strict'; // no sloppy JS habits allowed here.
 document.addEventListener('DOMContentLoaded', function(){
 	var topicData; // empty var to hold question JSON
+	var topicPosition;
+	var progressCounter = 1; // track number of questions asked
+	var score = 0; // track user's score
 
 	// load questions and topics as soon as the page is ready
 	function doAjax() {
@@ -93,7 +96,8 @@ document.addEventListener('DOMContentLoaded', function(){
 			// sends topic name to the button value
 			setTopic(this.innerHTML);
 			// sends order position to description function. This pulls the corresponding description from the JSON
-			setDescription(this.getAttribute('order'));
+			topicPosition = this.getAttribute('order');
+			setDescription(topicPosition);
 			}
 		}
 	}
@@ -103,23 +107,57 @@ document.addEventListener('DOMContentLoaded', function(){
 		startQuiz();
 	});
 
-	// grab quiz page body with AJAX
+	// grab quiz page body
 	function startQuiz(){
-		// load questions and topics as soon as the page is ready
-		function loadPage() {
-			var xmlhttp = new XMLHttpRequest();
-			var url = 'assets/data/questionScreen.html';
+		// load quiz screen via AJAX
+		var xmlhttp = new XMLHttpRequest();
+		var url = 'assets/data/questionScreen.html';
 
-			xmlhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-		    		var quizBody = this.responseText;
-		    		document.querySelector('.container').innerHTML = quizBody;
-				}
-		    }
-		    xmlhttp.open('GET', url, true);
-		    xmlhttp.send();
-		}
-		loadPage();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+	    		var quizBody = this.responseText;
+	    		document.querySelector('.container').innerHTML = quizBody;
+
+	    		// add code to update dynamic elements of the page
+				// progress counter
+				updateProgressCounter();
+				// prefill question one from current topic data
+				document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][0]['question'];
+
+				// close button
+				document.querySelector('.close').addEventListener('click', function(){
+					// future: make prompt function. Pass confirm box into it. Have confirm box call main screen function
+					console.log('close was pressed');
+					returnToMain();
+				});
+			}
+	    }
+	    xmlhttp.open('GET', url, true);
+	    xmlhttp.send();
+
+	} // end quiz
+
+	// update progress and score
+	function updateProgressCounter() {
+		document.querySelector('.progress').innerHTML = 'Progress: ' + progressCounter + ' / ' + topicData[topicPosition]['questions'].length;
+	}
+
+	function returnToMain() {
+		progressCounter = 1;
+
+		// load quiz screen via AJAX
+		var xmlhttp = new XMLHttpRequest();
+		var url = 'index.html';
+
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+	    		var wholePage = this.responseText;
+	    		console.log(wholePage,'here is my container');
+	    		document.querySelector('.container').innerHTML = wholePage;
+			}
+	    }
+	    xmlhttp.open('GET', url, true);
+	    xmlhttp.send();
 	}
 
 // end fake document ready
