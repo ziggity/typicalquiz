@@ -20,6 +20,7 @@ gulp.task('serve', ['css'], function() {
     });
     gulp.watch("*.html",["html"]).on('change', browserSync.reload);
 	gulp.watch("assets/css/*",["css"]).on('change', browserSync.reload);
+	gulp.watch("assets/data/*",["copy"]).on('change', browserSync.reload);
 	gulp.watch("assets/scss/*",["sass"]).on('change', browserSync.reload);
 	gulp.watch("assets/js/*",["js"]).on('change', browserSync.reload);
 	gulp.watch("assets/images/*",["copy"]).on('change', browserSync.reload);

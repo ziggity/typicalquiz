@@ -40,7 +40,15 @@ body {
 	font-size: 18px;
 	font-weight: strong;
 	font-family: $boldFont;
+}
+.boldHeading {
+	font-family: $boldFont;
+	&.topic {
 
+	}
+	&.category {
+		float: right;
+	}
 }
 .sectionHeader {
 	color: white;
@@ -69,6 +77,9 @@ button {
 		font-weight: bold;
 		width: 100%;
 	    background: #72527e;
+	}
+	&:hover {
+		cursor: pointer;
 	}
 }
 
@@ -99,6 +110,7 @@ button {
 	    &:hover {
 	    	background: white;
     		color: #3f1f4b;
+    		cursor: pointer;
 	    }
 	}
 }

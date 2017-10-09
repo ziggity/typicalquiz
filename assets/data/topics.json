@@ -1,0 +1,35 @@
+[{
+	"name":"Learn Git",
+	"description":"This quiz covers basic commands found in Git system.",
+	"questions": [
+		{
+			"question":"first question",
+			"hint" :"this is a hint for q1",
+			"answer" : "This is the answer to question 1"
+		},
+		{
+			"question":"Second question",
+			"hint" :"this is a hint for q2",
+			"answer" : "This is the answer to question 2"
+		}
+
+	]
+},
+{
+	"name":"Some other topic",
+	"description":"This quiz covers other things.",
+	"questions": [
+		{
+			"question":"first question that is not git",
+			"hint" :"this is a hint for q1 no git",
+			"answer" : "This is the answer to question 1 no git"
+		},
+		{
+			"question":"Second question",
+			"hint" :"this is a hint for q2 no git",
+			"answer" : "This is the answer to question 2 no git"
+		}
+
+	]
+}
+]
