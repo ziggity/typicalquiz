@@ -23,12 +23,16 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 	doAjax();
 
-	// open select menu
-	document.querySelector("#topicMenu").addEventListener("click", function(event){
-		event.preventDefault();
-		console.log("You clicked",this.id);
-		expandMenu(this.id);
-	});
+	function watchSelectMenu(){
+		// open select menu
+		document.querySelector("#topicMenu").addEventListener("click", function(event){
+			event.preventDefault();
+			console.log("You clicked",this.id);
+			expandMenu(this.id);
+		});
+
+	}
+	watchSelectMenu();
 
 	// when button is clicked, toggle visibility of menu items
 	function expandMenu(target) {
@@ -102,10 +106,21 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	}
 
-	// start quiz when button is pressed
-	document.querySelector('.start').addEventListener('click', function() {
-		startQuiz();
-	});
+	function watchQuiz(){
+		// start quiz when button is pressed
+		document.querySelector('.start').addEventListener('click', function() {
+			console.log("You pressed start");
+			console.log(document.querySelector('#topicMenu').innerText);
+			var topicVar = document.querySelector('#topicMenu').innerText;
+			if (topicVar == 'Choose One') {
+				console.log('no value!');
+				errorGenerator('Please select a topic.');
+			} else {
+				startQuiz();
+			}
+		});
+	}
+	watchQuiz();
 
 	// grab quiz page body
 	function startQuiz(){
@@ -139,7 +154,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// update progress and score
 	function updateProgressCounter() {
-		document.querySelector('.progress').innerHTML = 'Progress: ' + progressCounter + ' / ' + topicData[topicPosition]['questions'].length;
+		if (document.querySelector('.progress')) {
+			document.querySelector('.progress').innerHTML = 'Progress: ' + progressCounter + ' / ' + topicData[topicPosition]['questions'].length;
+		}
+
 	}
 
 	function returnToMain() {
@@ -152,12 +170,33 @@ document.addEventListener('DOMContentLoaded', function(){
 		xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 	    		var wholePage = this.responseText;
+	    		console.log('start fresh...');
 	    		console.log(wholePage,'here is my container');
-	    		document.querySelector('.container').innerHTML = wholePage;
+	    		document.write(wholePage);
+	    		//document.close();
+	    		// future: there has to be a better way than this. I'm re-calling each eventlistener when I load page contents. :-(
+	    		doAjax();
+				setTimeout(function() {
+					//console.log('delay before hiding');
+					watchSelectMenu();
+					watchQuiz();
+				}, 1000);
 			}
 	    }
 	    xmlhttp.open('GET', url, true);
 	    xmlhttp.send();
+	}
+
+	function errorGenerator(message) {
+		var newDiv = document.createElement('div'); // create div element
+		newDiv.classList.add('errorBox'); // apply class for manipulation & styling
+		newDiv.innerText = message; // apply message var as content of new div
+		console.log(newDiv);
+		document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
+		// delete error after 10 seconds
+		setTimeout(function() {
+	    	document.querySelector('.container').removeChild(document.querySelector('.errorBox'))
+	    }, 5000);
 	}
 
 // end fake document ready

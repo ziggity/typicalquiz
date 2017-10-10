@@ -11,8 +11,12 @@
 			"question":"Second question",
 			"hint" :"this is a hint for q2",
 			"answer" : "This is the answer to question 2"
+		},
+		{
+			"question":"Third question",
+			"hint" :"this is a hint for q3",
+			"answer" : "This is the answer to question 3"
 		}
-
 	]
 },
 {
