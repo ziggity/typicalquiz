@@ -144,7 +144,22 @@ document.addEventListener('DOMContentLoaded', function(){
 				document.querySelector('.close').addEventListener('click', function(){
 					// future: make prompt function. Pass confirm box into it. Have confirm box call main screen function
 					console.log('close was pressed');
-					modalGenerator(endQuizMessage);
+					modalGenerator(endQuizMessage, 'yes', 'no');
+				});
+
+				document.querySelector('.hint').addEventListener('click', function(){
+					console.log('hint clicked');
+					modalGenerator(topicData[topicPosition]['questions'][0]['hint'], 'yes');
+				});
+
+				document.querySelector('.skip').addEventListener('click', function(){
+					// keep score the same
+					// show new question
+					document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][progressCounter-1]['question'];
+					console.log('progress counter',progressCounter);
+					console.log('this should be a question',topicData[topicPosition]['questions'][progressCounter]['question']);
+					updateProgressCounter();
+					console.log('progress counter',progressCounter);
 				});
 			}
 	    }
@@ -156,8 +171,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	// update progress and score
 	function updateProgressCounter() {
 		if (document.querySelector('.progress')) {
-			document.querySelector('.progress').innerHTML = 'Progress: ' + progressCounter + ' / ' + topicData[topicPosition]['questions'].length;
+			document.querySelector('.progress').innerHTML = 'Progress: ' + (progressCounter) + ' / ' + topicData[topicPosition]['questions'].length;
 		}
+		progressCounter++;
 
 	}
 
@@ -205,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	    	document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
 	    }, 5000);
 	}
-
+/*
 	function modalGenerator(message, action) {
 		var divClass = 'messageBox';
 		var newDiv = document.createElement('div'); // create div element
@@ -224,6 +240,40 @@ document.addEventListener('DOMContentLoaded', function(){
 		document.querySelector('.' + divClass + ' .no').addEventListener('click', function(){
 			document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
 		});
+	}
+*/
+	function modalGenerator(message, actionOne, actionTwo) {
+		var divClass = 'messageBox';
+		var newDiv = document.createElement('div'); // create div element
+		newDiv.classList.add(divClass); // apply class for manipulation & styling
+		//newDiv.innerText = message; // apply message var as content of new div
+		if (actionTwo) {
+			newDiv.innerHTML = message + '<button class=\'yes\'>Yes</button><button class=\'no\'>No</button>';
+			//console.log(newDiv);
+			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
+
+			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
+				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+				console.log('now I\'m returning home');
+				//action;
+				returnToMain();
+			});
+			document.querySelector('.' + divClass + ' .no').addEventListener('click', function(){
+				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+			});
+		} else {
+			newDiv.innerHTML = message + '<div class=\'row full\'><button class=\'yes\'>Okay</button></div>';
+			//console.log(newDiv);
+			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
+
+			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
+				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+				console.log('now I\'m closing');
+				//action;
+				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+			});
+		}
+
 	}
 // end fake document ready
 }, false);
