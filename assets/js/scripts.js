@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var topicPosition;
 	var progressCounter = 1; // track number of questions asked
 	var score = 0; // track user's score
+	var endQuizMessage = 'Are you sure you want to end your quiz?';
 
 	// load questions and topics as soon as the page is ready
 	function doAjax() {
@@ -143,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				document.querySelector('.close').addEventListener('click', function(){
 					// future: make prompt function. Pass confirm box into it. Have confirm box call main screen function
 					console.log('close was pressed');
-					returnToMain();
+					modalGenerator(endQuizMessage);
 				});
 			}
 	    }
@@ -161,6 +162,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 
 	function returnToMain() {
+		location.reload();
+		// I need to do this properly or not at all...
+		/*
 		progressCounter = 1;
 
 		// load quiz screen via AJAX
@@ -185,19 +189,41 @@ document.addEventListener('DOMContentLoaded', function(){
 	    }
 	    xmlhttp.open('GET', url, true);
 	    xmlhttp.send();
+
+	    */
 	}
 
 	function errorGenerator(message) {
+		var divClass = 'errorBox';
 		var newDiv = document.createElement('div'); // create div element
-		newDiv.classList.add('errorBox'); // apply class for manipulation & styling
+		newDiv.classList.add(divClass); // apply class for manipulation & styling
 		newDiv.innerText = message; // apply message var as content of new div
-		console.log(newDiv);
+		//console.log(newDiv);
 		document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
 		// delete error after 10 seconds
 		setTimeout(function() {
-	    	document.querySelector('.container').removeChild(document.querySelector('.errorBox'))
+	    	document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
 	    }, 5000);
 	}
 
+	function modalGenerator(message, action) {
+		var divClass = 'messageBox';
+		var newDiv = document.createElement('div'); // create div element
+		newDiv.classList.add(divClass); // apply class for manipulation & styling
+		//newDiv.innerText = message; // apply message var as content of new div
+		newDiv.innerHTML = message + '<div class=\'yes\'>Yes</div><div class=\'no\'>No</div>';
+		//console.log(newDiv);
+		document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
+
+		document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
+			document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+			console.log('now I\'m returning home');
+			//action;
+			returnToMain();
+		});
+		document.querySelector('.' + divClass + ' .no').addEventListener('click', function(){
+			document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+		});
+	}
 // end fake document ready
 }, false);

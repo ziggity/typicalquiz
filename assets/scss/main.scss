@@ -53,11 +53,20 @@ body {
 .sectionHeader {
 	color: white;
 	margin: 0;
+	font-family: Alfa Slab One;
+    font-weight: lighter;
+    letter-spacing: .04em;
 }
 
 .topBox {
 	background: $lightMain;
 	padding: $p1;
+}
+
+.topBox, .lowerBox {
+	.sectionHeader {
+		color: rgba(255, 255, 255, 0.20);
+	}
 }
 
 .lowerBox {
@@ -83,8 +92,37 @@ button {
 	}
 }
 
+.userButtons {
+	padding: 0;
+	background: $darkMain;
+	button {
+		background: #72527e;
+	}
+}
+
+
 .row {
 	margin-bottom: 20px;
+	&.full {
+	    display: table;
+    	width: 100%;
+    	margin-bottom: 0;
+	}
+	&.two {
+		button {
+			//width: calc(50% - 3px);
+			width: 50%;
+		}
+	}
+}
+#answerRow {
+	textarea {
+		background: none;
+	    border: none;
+	    width: 100%;
+	    color: white;
+	    font-size: 18px;
+	}
 }
 
 .dropdown {
@@ -131,4 +169,17 @@ button {
 	margin-top: 5px;
 	text-align: center;
 	color: #ad0606;
+}
+
+.messageBox {
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	background: red;
+	position: absolute;
+	  left: 50%;
+	  top: 50%;
+	    transform: translate(-50%, -50%);
+
+
 }
