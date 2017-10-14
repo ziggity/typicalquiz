@@ -215,3 +215,11 @@ button {
 	bottom: 0;
 	right: 0;
 }
+
+@media only screen and (max-width: 500px) {
+	.messageBox .inner {
+		left: calc(50% - 50vw);
+	    top: 20px;
+	    width: 100vw;
+	}
+}
