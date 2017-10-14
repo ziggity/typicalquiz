@@ -3,19 +3,19 @@
 	"description":"This quiz covers basic commands found in Git system.",
 	"questions": [
 		{
-			"question":"first question",
+			"question":"Command used to initialize new git repository.",
 			"hint" :"this is a hint for q1",
-			"answer" : "This is the answer to question 1"
+			"answer" : "git init"
 		},
 		{
-			"question":"Second question",
+			"question":"Copies an existing Git repository.",
 			"hint" :"this is a hint for q2",
-			"answer" : "This is the answer to question 2"
+			"answer" : "git clone"
 		},
 		{
-			"question":"Third question",
+			"question":"Setup the basic git user parameters on an individual or global level",
 			"hint" :"this is a hint for q3",
-			"answer" : "This is the answer to question 3"
+			"answer" : "git config"
 		}
 	]
 },

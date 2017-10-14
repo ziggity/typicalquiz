@@ -2,9 +2,14 @@
 document.addEventListener('DOMContentLoaded', function(){
 	var topicData; // empty var to hold question JSON
 	var topicPosition;
-	var progressCounter = 1; // track number of questions asked
+	var progressCounter = 0; // track number of questions asked
 	var score = 0; // track user's score
 	var endQuizMessage = 'Are you sure you want to end your quiz?';
+	var final = null;
+	var textStrings = {
+		'selectTopic' : 'Please select a topic.',
+		'pleaseAnswer' : 'At least try and answer the question, alright?'
+	}
 
 	// load questions and topics as soon as the page is ready
 	function doAjax() {
@@ -66,12 +71,17 @@ document.addEventListener('DOMContentLoaded', function(){
 		// }
 	} // end expandMenu
 
-	// set topic contents from JSON when menu item is selected
+	// set homepage topic menu header from JSON when menu item is selected
 	function setTopic(selection) {
 		console.log(selection);
 		document.querySelector("#topicMenu").innerText = selection;
 		document.querySelector("#topicMenu + .dropdownList").classList.toggle("show");
 		//console.log("you clicked "+selection.innerHTML);
+	}
+
+	// set topic name on active quiz page
+	function setTopicHeader() {
+		document.querySelector('.topic').innerText = topicData[topicPosition]['name'];
 	}
 
 	// set description contents from JSON when menu item is selected
@@ -115,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			var topicVar = document.querySelector('#topicMenu').innerText;
 			if (topicVar == 'Choose One') {
 				console.log('no value!');
-				errorGenerator('Please select a topic.');
+				errorGenerator(textStrings.selectTopic);
 			} else {
 				startQuiz();
 			}
@@ -134,9 +144,12 @@ document.addEventListener('DOMContentLoaded', function(){
 	    		var quizBody = this.responseText;
 	    		document.querySelector('.container').innerHTML = quizBody;
 
-	    		// add code to update dynamic elements of the page
+	    		// set topic name
+	    		setTopicHeader();
+	    		// set category name
 				// progress counter
-				updateProgressCounter();
+
+				console.log('AJAX request. Progress counter is ' + progressCounter);
 				// prefill question one from current topic data
 				document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][0]['question'];
 
@@ -149,32 +162,111 @@ document.addEventListener('DOMContentLoaded', function(){
 
 				document.querySelector('.hint').addEventListener('click', function(){
 					console.log('hint clicked');
-					modalGenerator(topicData[topicPosition]['questions'][0]['hint'], 'yes');
+					console.log('progress counter inside hint is', progressCounter);
+					modalGenerator(topicData[topicPosition]['questions'][progressCounter]['hint'], 'yes');
 				});
 
 				document.querySelector('.skip').addEventListener('click', function(){
-					// keep score the same
-					// show new question
-					document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][progressCounter-1]['question'];
-					console.log('progress counter',progressCounter);
-					console.log('this should be a question',topicData[topicPosition]['questions'][progressCounter]['question']);
-					updateProgressCounter();
-					console.log('progress counter',progressCounter);
+					nextQuestion();
+				});
+
+				document.querySelector('.answer').addEventListener('click', function(){
+					console.log('you ask, I answer');
+					console.log('topic position is ' + topicPosition);
+					console.log('progress counter is ' + progressCounter);
+					// show modal if there's a value in textarea
+					var userAnswer = document.querySelector('#answerRow textarea').value;
+					var rightAnswer = topicData[topicPosition]['questions'][(progressCounter)]['answer'];
+					console.log('user answer: ' + userAnswer);
+					if (userAnswer != '') {
+						// modalGenerator(topicData[topicPosition]['questions'][(progressCounter)]['answer'], 'okay');
+						// see if user input matches real answer
+						function checkAnswer(){
+							if (userAnswer == rightAnswer) {
+								console.log('right answer');
+								console.log('Correct, the answer is ' + rightAnswer);
+								modalGenerator('Correct, the answer is ' + rightAnswer, 'Continue');
+								//updateProgressCounter();
+								score++;
+								// nextQuestion();
+							} else {
+								console.log('wrong answer');
+								modalGenerator('Sorry, the answer is ' + rightAnswer, 'Continue');
+								//updateProgressCounter();
+								// nextQuestion();
+							}
+						}
+						checkAnswer();
+
+					} else {
+						errorGenerator(textStrings.pleaseAnswer);
+					}
 				});
 			}
+			setProgressFieldValue();
 	    }
 	    xmlhttp.open('GET', url, true);
 	    xmlhttp.send();
 
 	} // end quiz
 
+	function nextQuestion() {
+		// keep score the same
+		// show new question
+		console.log('showing next question');
+
+		if(progressCounter < topicData[topicPosition]['questions'].length) {
+			updateProgressCounter();
+			// document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][progressCounter]['question'];
+			// console.log('this should be a new question',topicData[topicPosition]['questions'][progressCounter]['question']);
+		} else if (progressCounter == topicData[topicPosition]['questions'].length) {
+			console.log('next question report: game over');
+			updateProgressCounter();
+		}
+		console.log('progress counter',progressCounter);
+
+
+		// write end scenario for when final question is reached
+
+	}
+
 	// update progress and score
 	function updateProgressCounter() {
-		if (document.querySelector('.progress')) {
-			document.querySelector('.progress').innerHTML = 'Progress: ' + (progressCounter) + ' / ' + topicData[topicPosition]['questions'].length;
-		}
-		progressCounter++;
+		console.log('number of questions ' + topicData[topicPosition]['questions'].length);
+		if(progressCounter < topicData[topicPosition]['questions'].length) {
+			progressCounter++;
+			if (progressCounter <= topicData[topicPosition]['questions'].length - 1){
+				console.log('new value for progressCounter: ' + progressCounter);
+				document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][progressCounter]['question'];
+				console.log('this should be a new question',topicData[topicPosition]['questions'][progressCounter]['question']);
+				setProgressFieldValue();
+			}
 
+
+		} if (progressCounter == topicData[topicPosition]['questions'].length) {
+			console.log('Progress report: game over');
+			//setProgressFieldValue();
+			// score here
+			var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
+				+ '<br>Category: ... Coming Soon <br>'
+				+ '<strong>Score</strong>: ' + score + ' out of ' + topicData[topicPosition]['questions'].length;
+			final = true;
+			console.log('this is final' + final);
+			modalGenerator(scoreMessage, 'Continue'); // 3rd var for desitnation?
+		}
+
+	}
+
+	// update progress field contents
+	function setProgressFieldValue() {
+		// update counter at top of page
+		if (document.querySelector('.progress')) {
+			document.querySelector('.progress').innerHTML = 'Progress: ' + (Number(progressCounter) + 1) + ' / ' + topicData[topicPosition]['questions'].length;
+		}
+		// clear the answer textarea
+		if(document.querySelector('#answerRow textarea')){
+			document.querySelector('#answerRow textarea').value = '';
+		}
 	}
 
 	function returnToMain() {
@@ -248,10 +340,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		newDiv.classList.add(divClass); // apply class for manipulation & styling
 		//newDiv.innerText = message; // apply message var as content of new div
 		if (actionTwo) {
-			newDiv.innerHTML = message + '<button class=\'yes\'>Yes</button><button class=\'no\'>No</button>';
+			newDiv.innerHTML = '<div class=\'inner\'><div class=\'row pad\'>' + message + '</div> <button class=\'yes\'>Yes</button><button class=\'no\'>No</button></div>';
 			//console.log(newDiv);
 			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
-
+			console.log('queryselector: ' + '.' + divClass +' .yes');
 			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
 				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
 				console.log('now I\'m returning home');
@@ -262,15 +354,23 @@ document.addEventListener('DOMContentLoaded', function(){
 				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
 			});
 		} else {
-			newDiv.innerHTML = message + '<div class=\'row full\'><button class=\'yes\'>Okay</button></div>';
+			newDiv.innerHTML = '<div class=\'inner\'><div class=\'row pad\'>' + message + '</div> <div class=\'row full\'><button class=\'yes\'>' + actionOne + '</button></div></div>';
 			//console.log(newDiv);
 			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
-
+			console.log('queryselector: ' + '.' + divClass +' .yes');
 			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
 				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
 				console.log('now I\'m closing');
 				//action;
-				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+				//document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+				if (actionOne == 'Continue') {
+					if (final) {
+						console.log('good job, you finished the game...');
+						returnToMain();
+					} else {
+						nextQuestion();
+					}
+				}
 			});
 		}
 
