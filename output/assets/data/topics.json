@@ -4,18 +4,27 @@
 	"questions": [
 		{
 			"question":"Command used to initialize new git repository.",
-			"hint" :"this is a hint for q1",
-			"answer" : "git init"
+			"hint" : "this is a hint for q1",
+			"answer" : "git init",
+			"category" : "git 101"
 		},
 		{
 			"question":"Copies an existing Git repository.",
-			"hint" :"this is a hint for q2",
-			"answer" : "git clone"
+			"hint" : "this is a hint for q2",
+			"answer" : "git clone",
+			"category" : "git 101"
+		},
+		{
+			"question":"View current state of the current project.",
+			"hint" :"Shows files in all the various states of the work flow",
+			"answer" : "git status",
+			"category" : "git 101"
 		},
 		{
 			"question":"Setup the basic git user parameters on an individual or global level",
-			"hint" :"this is a hint for q3",
-			"answer" : "git config"
+			"hint" : "this is a hint for q3",
+			"answer" : "git config",
+			"category" : "git 101"
 		}
 	]
 },
@@ -26,12 +35,14 @@
 		{
 			"question":"first question that is not git",
 			"hint" :"this is a hint for q1 no git",
-			"answer" : "This is the answer to question 1 no git"
+			"answer" : "This is the answer to question 1 no git",
+			"category" : "example category"
 		},
 		{
 			"question":"Second question",
 			"hint" :"this is a hint for q2 no git",
-			"answer" : "This is the answer to question 2 no git"
+			"answer" : "This is the answer to question 2 no git",
+			"category" : "example category"
 		}
 
 	]

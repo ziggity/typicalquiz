@@ -5,6 +5,7 @@ $subTitle : rgba(255,255,255,.5);
 $lightMain: #4E265E;
 $darkMain: #3E1E4B;
 $transWhite: rgba(255,255,255,.2);
+$transWhiteHover: rgba(255,255,255,.1);
 $p1: 10px;
 $boldFont: 'Alfa Slab One';
 
@@ -72,6 +73,10 @@ h3,h2 {
 	}
 }
 
+.buttonBox {
+	background: $lightMain;
+}
+
 .lowerBox {
 	background: $darkMain;
 	padding: $p1;
@@ -88,10 +93,11 @@ button {
 		//color: $darkMain;
 		font-weight: bold;
 		width: 100%;
-	    background: #72527e;
+	    background: $transWhite;
 	}
 	&:hover {
 		cursor: pointer;
+		background: $transWhiteHover;
 	}
 }
 
@@ -100,6 +106,10 @@ button {
 	background: $darkMain;
 	button {
 		background: #72527e;
+		&:hover {
+			//background: lighten($darkMain,10%);
+			background: #795886;
+		}
 	}
 }
 
@@ -116,6 +126,11 @@ button {
     	button {
     		width: 100%;
     	}
+    	&.multi {
+    		button {
+    			width: 50%;
+    		}
+    	}
 	}
 	&.two {
 		button {
@@ -125,12 +140,18 @@ button {
 	}
 }
 #answerRow {
+	margin-bottom: 0;
 	textarea {
 		background: none;
 	    border: none;
 	    width: 100%;
 	    color: white;
 	    font-size: 18px;
+	    min-height: 3rem;
+	}
+	label {
+		font-size: 1.5em;
+		display: block;
 	}
 }
 
@@ -214,6 +235,17 @@ button {
 	left: 0;
 	bottom: 0;
 	right: 0;
+}
+
+.correct {
+	color: green;
+}
+.wrong {
+	color: red;
+}
+.questionCount {
+	margin-left: 2rem;
+    color: rgba(255, 255, 255, 0.42);
 }
 
 @media only screen and (max-width: 500px) {
