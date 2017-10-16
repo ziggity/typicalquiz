@@ -9,6 +9,9 @@ $transWhiteHover: rgba(255,255,255,.1);
 $p1: 10px;
 $boldFont: 'Alfa Slab One';
 
+.hide {
+	display: none!important;
+}
 
 body {
 	background: black;
@@ -138,7 +141,11 @@ button {
 			width: 50%;
 		}
 	}
+	&.narrow {
+		line-height: 1rem;
+	}
 }
+
 #answerRow {
 	margin-bottom: 0;
 	textarea {
@@ -246,6 +253,67 @@ button {
 .questionCount {
 	margin-left: 2rem;
     color: rgba(255, 255, 255, 0.42);
+}
+.progress {
+	display: inline-block;
+	font-size: .8rem;
+}
+.random {
+	float: right;
+    font-size: .8rem;
+    //background: url(../images/shuffle.svg) no-repeat 0 3px;
+    padding-left: 1.1rem;
+    &:hover {
+    	color: hsla(0, 0%, 100%, 0.5);
+    	cursor: pointer;
+    }
+    svg {
+    	vertical-align: middle;
+    }
+}
+
+.random:hover g#Page-1 {
+	opacity: .5;
+}
+
+.random.active {
+	color: hsla(0, 0%, 100%, 0.78);
+	g#Page-1 {
+		opacity: .8;
+	}
+}
+
+.randomHolder {
+	display: inline-block;
+	float: right;
+	line-height: 3rem;
+	img {
+		opacity: 0.6;
+	}
+	&.active {
+		.randomStatus {
+	    	color: hsla(0, 0%, 100%, 0.6);
+		}
+		img {
+			opacity: 1;
+		}
+	}
+	.randomStatus {
+		color: hsla(0,0%,100%,.32);
+		width: 5.5rem;
+	    display: inline-block;
+	    margin-left: .1rem;
+	}
+}
+
+.randomHolder:hover {
+	cursor: pointer;
+	.randomStatus {
+		color: hsla(0, 0%, 100%, 0.5);
+	}
+	img {
+		opacity: 0.8;
+	}
 }
 
 @media only screen and (max-width: 500px) {

@@ -2,10 +2,13 @@
 // wait till page is fully loaded
 document.addEventListener('DOMContentLoaded', function(){
 	var topicData; // empty var to hold question JSON
+	var topicDataRandom; // will hold the shuffled order
+	var topicDataBackup; // untampered copy of topicData order
 	var topicPosition; // track the selected topic
 	var progressCounter = 0; // track number of questions asked
 	var score = 0; // track user's score
 	var final = null; // end status
+	var random = null;
 	// collection of text strings
 	var textStrings = {
 		'selectTopic' : 'Please select a topic.',
@@ -19,15 +22,16 @@ document.addEventListener('DOMContentLoaded', function(){
 		var url = 'assets/data/topics.json'; // data source
 
 		xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-    		topicData = JSON.parse(this.responseText); // holds entire JSON
-    		//console.log(topicData);
-    		populateTopic(); // fill Topic dropdown menu for user to choose
+			if (this.readyState == 4 && this.status == 200) {
+	    		topicData = JSON.parse(this.responseText); // holds entire JSON
+	    		topicDataBackup = topicData; // create backup
+	    		topicDataRandom = topicData; // set random order to normal values... for now
+	    		// console.log(topicData, 'untouched topicData');
+	    		populateTopic(); // fill Topic dropdown menu for user to choose
+	    	}
     	}
-    }
-    xmlhttp.open('GET', url, true); // connect
-    xmlhttp.send(); // Engage!
-
+	    xmlhttp.open('GET', url, true); // connect
+	    xmlhttp.send(); // Engage!
 	}
 	doAjax(); // You know, run function.
 
@@ -66,7 +70,9 @@ document.addEventListener('DOMContentLoaded', function(){
 		document.querySelector("#topicMenu").innerText = selection;
 		document.querySelector("#topicMenu + .dropdownList").classList.toggle("show");
 		//console.log("you clicked "+selection.innerHTML);
-		document.querySelector('.questionCount').innerHTML = count + ' Questions';
+		document.querySelector('.questionCount').innerHTML = count + ' Questions'; // total number of questions
+		document.querySelector('.randomStatus').innerText = 'Random Off'; // start with random off
+		document.querySelector('.randomHolder').classList.remove('hide'); // make visible
 	}
 
 	// set topic name on active quiz page
@@ -123,6 +129,35 @@ document.addEventListener('DOMContentLoaded', function(){
 	watchQuiz(); // start event listener. Called via function later when container content is replaced.
 	// I know there's probably a smarter way to do this...
 
+
+// ...
+	// function randomize(a, b) {
+	// 	console.log('i\'m inside the randomize');
+	//     return Math.random();
+	// }
+
+	//
+	document.querySelector('.randomHolder').addEventListener('click', function(){
+		if (random) {
+			random = false;
+			document.querySelector('.randomStatus').innerText = 'Random off';
+			document.querySelector('.randomHolder').classList.remove('active');
+			topicData = topicDataBackup; // reset topicData to the backup copy.
+			console.log(topicData[topicPosition]['questions']);
+		} else {
+			console.log(topicData[topicPosition]['questions'], 'untouched topicData');
+			random = true;
+			document.querySelector('.randomStatus').innerText = 'Random on';
+			document.querySelector('.randomHolder').classList.add('active');
+			var randomTopicHolder = topicDataRandom[topicPosition]['questions'];
+			console.log(randomTopicHolder,'normal order');
+			randomTopicHolder.sort(function (a, b) {return Math.random() - 0.5;})
+    		console.log(randomTopicHolder,'random order');
+			topicData = topicDataRandom;
+			console.log(topicData[topicPosition]['questions'],'topicData now random');
+		}
+	});
+
 	// grab quiz page body and fire off question and score system. This is the big one.
 	function startQuiz(){
 		// load quiz screen via AJAX
@@ -155,6 +190,29 @@ document.addEventListener('DOMContentLoaded', function(){
 				document.querySelector('.skip').addEventListener('click', function(){
 					nextQuestion(); // load next question without changing score
 				});
+
+				// turn on random order
+
+				/*document.querySelector('.random').addEventListener('click', function(){
+					var randomDiv = document.querySelector('.random');
+					randomDiv.classList.toggle('active');
+					if (random) {
+						random = false;
+						console.log('Random is off!');
+						document.querySelector('.random span').innerHTML = 'Random Off';
+					} else {
+						random = true;
+						console.log('Random is on!');
+						document.querySelector('.random span').innerHTML = 'Random On';
+					}
+				});
+				*/
+				if (random) {
+					document.querySelector('.random span').innerHTML = 'Random On';
+				} else {
+					document.querySelector('.random span').innerHTML = 'Random Off';
+				}
+
 				// event listener for validating answer
 				document.querySelector('.answer').addEventListener('click', function(){
 
