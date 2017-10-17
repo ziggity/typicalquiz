@@ -19,12 +19,8 @@
 			<div class="tile">
 				<div class="topBox">
 					<div class="dropdown">
-						<button id="topicMenu">Choose One</button>
+						<button id="topicMenu" class="dropdownMenu">Choose One</button>
 						<div id="topicList" class="dropdownList">
-						    <a href="#two" >Second</a>
-						    <a href="#one" >Learn Git</a>
-						    <a href="#two" >Second</a>
-						    <a href="#three" >Third</a>
 			  			</div>
 					</div>
 					<span class="questionCount"></span>
@@ -36,8 +32,15 @@
 		<div class="row" id="categoryRow">
 			<h2 class="sectionHeader">Choose Category</h2>
 			<div class="tile">
-				<div class="topBox">Coming Soon...</div>
-				<div class="lowerBox">Coming Soon...</div>
+				<div class="topBox">
+					<div class="dropdown">
+						<button id="categoryMenu" class="secondMenu disabled">All</button>
+						<div id="categoryList" class="dropdownList">
+						    <a href="#one" >All</a>
+			  			</div>
+					</div>
+				</div>
+				<div class="lowerBox"></div>
 			</div>
 		</div>
 		<div class="buttonBox"><button class="start">Start!</button></div>
