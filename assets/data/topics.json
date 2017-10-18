@@ -22,8 +22,26 @@
 		},
 		{
 			"question":"Setup the basic git user parameters on an individual or global level",
-			"hint" : "{this is a hint for q3",
+			"hint" : "this is a hint for q4",
 			"answer" : "git config",
+			"category" : "git 101"
+		},
+		{
+			"question":"How would you tell git to add all PNG files in the root directory?",
+			"hint" : "Please use single quotes",
+			"answer" : "git add '*.png'",
+			"category" : "git 101"
+		},
+		{
+			"question":"Used to compare changes between remote files and local",
+			"hint" : "Handy file comparison",
+			"answer" : "git diff",
+			"category" : "git 101"
+		},
+		{
+			"question":"Define the author email address to be used in all commits for current repo ",
+			"hint" : "There's a global version also",
+			"answer" : "git config user.email",
 			"category" : "git 101"
 		},
 		{

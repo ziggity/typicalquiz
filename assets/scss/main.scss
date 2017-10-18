@@ -325,9 +325,36 @@ button {
 }
 
 @media only screen and (max-width: 500px) {
+	.sectionHeader {
+		text-align: center;
+	}
 	.messageBox .inner {
 		left: calc(50% - 50vw);
 	    top: 20px;
 	    width: 100vw;
+	}
+	.questionCount {
+		display: block;
+	    margin-left: 0;
+	    text-align: center;
+	}
+	.dropdown {
+		width: 100%;
+		button {
+			width: 100%;
+		}
+	}
+	.dropdownList {
+		width: 100%
+	}
+	.randomHolder {
+		display: block;
+	    float: none;
+	    text-align: center;
+	    line-height: inherit;
+	    margin-bottom: -10px;
+	}
+	#topicRow .lowerBox {
+		text-align: center;
 	}
 }
