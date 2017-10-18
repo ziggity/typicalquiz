@@ -104,6 +104,14 @@ button {
 	}
 }
 
+.disabled {
+	opacity: .2;
+    cursor: initial;
+    &:hover {
+		cursor: initial;
+		background: $transWhite;
+	}
+}
 .userButtons {
 	padding: 0;
 	background: $darkMain;

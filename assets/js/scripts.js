@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', function(){
 	var topicData; // empty var to hold question JSON
 	var topicDataRandom; // will hold the shuffled order
 	var topicDataBackup; // untampered copy of topicData order
+	var topicDataFilteredCategory = []; // holds questions from current category
 	var topicPosition; // track the selected topic
+	var categoryPosition; // track current category position... I might need this to be an object later.
+	var chosenCategory = 'All'; // hold user's selected category
 	var progressCounter = 0; // track number of questions asked
 	var score = 0; // track user's score
 	var final = null; // end status
@@ -38,16 +41,23 @@ document.addEventListener('DOMContentLoaded', function(){
 	// built my own select menu
 	function watchSelectMenu(){
 		// open select menu when clicked
-		document.querySelector("#topicMenu").addEventListener("click", function(event){
+		document.querySelector(".dropdownMenu").addEventListener("click", function(event){
 			event.preventDefault(); // stop button standard action
-			//console.log("You clicked",this.id);
+			console.log("You clicked topic menu",this.id);
 			expandMenu(this.id); //pass id to menu function
 		});
 
+		document.querySelector(".secondMenu").addEventListener("click", function(event){
+				if (!document.querySelector("#categoryMenu").classList.contains('disabled')) {
+					event.preventDefault(); // stop button standard action
+					console.log("You clicked categoryMenu",this.id);
+					expandSecondMenu(this.id); //pass id to menu function
+				}
+			});
 	}
 	watchSelectMenu();
 
-	// when button is clicked, toggle visibility of menu items
+	// when button is clicked, toggle visibility of menu items. It's not fully reusable (yet)
 	function expandMenu(target) {
 
 		// change CSS visibility for specified menu ID
@@ -56,10 +66,27 @@ document.addEventListener('DOMContentLoaded', function(){
 		// hide menu if anything other than button is clicked
 		document.querySelector('body').addEventListener('click', function(event){
 			// if topic menu exists on page...
-			if (document.querySelector("#topicMenu + .dropdownList")) {
+			if (document.querySelector("#"+target+"+ .dropdownList")) {
 				// if target isn't a button turn off show CSS class
 				if (!event.target.matches('button')) {
-					document.querySelector("#topicMenu + .dropdownList").classList.remove("show");
+					document.querySelector("#"+target+"+ .dropdownList").classList.remove("show");
+				}
+			}
+		});
+	} // end expandMenu
+
+	function expandSecondMenu(target) {
+
+		// change CSS visibility for specified menu ID
+		document.querySelector("#"+target+"+.dropdownList").classList.toggle("show");
+
+		// hide menu if anything other than button is clicked
+		document.querySelector('body').addEventListener('click', function(event){
+			// if topic menu exists on page...
+			if (document.querySelector("#"+target+"+ .dropdownList")) {
+				// if target isn't a button turn off show CSS class
+				if (!event.target.matches('button')) {
+					document.querySelector("#"+target+"+ .dropdownList").classList.remove("show");
 				}
 			}
 		});
@@ -80,6 +107,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		document.querySelector('.topic').innerText = topicData[topicPosition]['name'];
 	}
 
+	// set topic name on active quiz page
+	function setCategoryHeader() {
+		document.querySelector('.category').innerText = 'Category: ' + chosenCategory;
+	}
+
 	// set description contents from JSON when menu item is selected
 	function setDescription(spot) {
 		document.querySelector("#topicRow .lowerBox").innerHTML = topicData[spot]['description'];
@@ -95,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			topicList += linkOpen + topicData[i]["name"] + linkClose; // grab name field
 		}
 		document.querySelector("#topicList").innerHTML = topicList; // set div content
-		var menuItems = document.querySelectorAll(".dropdownList a"); // selector for all list link elements
+		var menuItems = document.querySelectorAll("#topicList.dropdownList a"); // selector for all list link elements
 
 		// set click event listener for each element. I think this was clever
 		for (var i = 0; i < menuItems.length; i++) {
@@ -108,9 +140,77 @@ document.addEventListener('DOMContentLoaded', function(){
 				setDescription(topicPosition); // set description to selected topic
 				var questionTotal = topicData[topicPosition]['questions'].length; // count questions
 				setTopic(this.innerHTML,questionTotal); // sends topic name to the button value. questionTotal to description
+				if (document.querySelector('.secondMenu.disabled')) {
+					document.querySelector('.secondMenu.disabled').classList.remove('disabled'); // enable the category selection menu
+				}
+				populateCategory(); // when topic is chosen set the category
 			}
 		}
 	}
+
+	// load category items from JSON file
+	function populateCategory() {
+		var categoryList = '<a order=\'0\'>All</a>'; // hold HTML tag elements
+		var linkOpen = '<a>'; // opening tag to be appended below
+		var linkClose = '</a>' // closing tag to be appended below
+		var counter = 1; // counts number of questions in each category (might need an array...)
+
+		// attach opening and closing tag to each topic captured from JSON
+		var u = []; // will hold unique categories
+		var location = topicData[topicPosition]['questions'];
+		for(var i = 0; i < location.length; i++) {
+			// fancy index searching to filter unique values. If unique then add to array
+			if (u.indexOf(location[i]['category']) == -1 && location[i]['category'] !== '') {
+				u.push(location[i]['category']);
+				console.log(topicData[topicPosition]['questions'][i]['category']);
+				categoryList += linkOpen + topicData[topicPosition]['questions'][i]['category'] + linkClose; // grab name field
+				counter++;
+			}
+		}
+
+		document.querySelector("#categoryList").innerHTML = categoryList; // set div content
+		var menuItems = document.querySelectorAll("#categoryList.dropdownList a"); // selector for all list link elements
+
+		// set click event listener for each element. I still think this is clever
+		for (var i = 0; i < menuItems.length; i++) {
+			// Creates an attribute to track order. Sets it to current loop iteration value
+			menuItems[i].setAttribute('order', i);
+			// onclick function for every menuItem link
+			menuItems[i].onclick = function(){
+				// sends order position to description function. Function pulls the corresponding description from the JSON
+				categoryPosition = this.getAttribute('order');
+				//setCatDescription(categoryPosition); // there is no category Position right now.
+				// var questionTotal = topicData[topicPosition]['category'].length; // count questions
+				var questionTotal = counter; // count questions
+				setCategory(this.innerHTML,questionTotal); // sends category name to the button value. questionTotal to description
+			}
+		}
+	}
+
+	// set homepage Category menu header when item is selected
+	function setCategory(selection, count) {
+		chosenCategory = selection; // set global category to user's selection
+		document.querySelector("#categoryMenu").innerText = selection;
+		document.querySelector("#categoryMenu + .dropdownList").classList.toggle("show");
+		console.log("you clicked " + selection);
+		// document.querySelector('.questionCount').innerHTML = topicDataFilteredCategory[progressCounter].length + ' Questions'; // total number of questions
+		// attach opening and closing tag to each topic captured from JSON
+		var u = []; // will hold unique categories
+		var location = topicData[topicPosition]['questions'];
+		var categoryCounter = 0;
+		for(var i = 0; i < location.length; i++) {
+			if (location[i]['category'] == chosenCategory) {
+				categoryCounter++;
+			}
+		}
+		if (chosenCategory == 'All') {
+			document.querySelector('.questionCount').innerHTML = location.length + ' Questions';
+		} else {
+			document.querySelector('.questionCount').innerHTML = categoryCounter + ' Questions'; // total number of questions
+		}
+
+	}
+
 
 	// event listener for start button. I can move this somewhere else...
 	function watchQuiz(){
@@ -130,13 +230,13 @@ document.addEventListener('DOMContentLoaded', function(){
 	// I know there's probably a smarter way to do this...
 
 
-// ...
-	// function randomize(a, b) {
-	// 	console.log('i\'m inside the randomize');
-	//     return Math.random();
-	// }
+	// reusabe random function
+	/*function randomize(a, b) {
+		console.log('i\'m inside the randomize');
+	    return Math.random();
+	}*/
 
-	//
+	//event listener to activate random order
 	document.querySelector('.randomHolder').addEventListener('click', function(){
 		if (random) {
 			random = false;
@@ -164,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		var xmlhttp = new XMLHttpRequest(); // new request
 		var url = 'assets/data/questionScreen.html'; // data source. It's just an HTML page
 
+		// load quiz body and call even listeners
 		xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 	    		var quizBody = this.responseText; // holds entire JSON
@@ -172,8 +273,42 @@ document.addEventListener('DOMContentLoaded', function(){
 	    		// How do I do this more intelligently?
 
 	    		setTopicHeader(); // set topic name
-				// prefill question one from current topic data
-				document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][0]['question'];
+	    		setCategoryHeader(); // set category name
+
+				/* categoryconversion: filter topicData to contain only the selected category. Note, this means toggling random might
+				need to clear category menu also */
+				/* somewhere...
+					topicData[topicPosition]['questions'][i]['category'];
+					make new array of questions that match chosen cateory. do live filter?
+					add u to global scope.
+					add onclick to set global currentCategory var from menu
+					for loop to determine if questions[i]['category'] = currentCategory
+					change it here and in nextQuestion()
+				*/
+				// if no category is chosen, proceed in with simple question asking
+				if (chosenCategory == 'All') {
+					// prefill question one from current topic data
+					document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][0]['question'];
+				} else {
+					// console.log(topicData[topicPosition]['questions'].length,'length of questions');
+					console.log('chosenCategory',chosenCategory);
+					console.log(topicData[topicPosition]['questions']);
+					// find all questions that match chosen category
+					for (var i = 0; i < topicData[topicPosition]['questions'].length; i++) {
+						// if question matches category, add to filtered array
+						console.log(topicData[topicPosition]['questions'][i]['category']);
+						if (topicData[topicPosition]['questions'][i]['category'] == chosenCategory){
+							topicDataFilteredCategory.push(topicData[topicPosition]['questions'][i]);
+							// console.log('category match. i gonna push');
+						}
+					}
+					console.log(topicDataFilteredCategory,'show me what you got, topicDataFilteredCategory.');
+					document.querySelector('.questionHolder').innerHTML = topicDataFilteredCategory[0]['question'];
+					/* current issue. filteredcategory is a ghetto clone and only has question data, not hints, etc.
+					I need to fill it with the same content and structure as the normal array for the rest of the all to function.
+					But I can still feel good because it's almost there. I've come a long way. */
+				}
+
 
 				// close button event listener
 				document.querySelector('.close').addEventListener('click', function(){
@@ -215,28 +350,59 @@ document.addEventListener('DOMContentLoaded', function(){
 
 				// event listener for validating answer
 				document.querySelector('.answer').addEventListener('click', function(){
-
 					var userAnswer = document.querySelector('#answerRow textarea').value;
-					var rightAnswer = topicData[topicPosition]['questions'][(progressCounter)]['answer'];
-					// console.log('user answer: ' + userAnswer);
-					// basic validation. Show modal if there's a value in textarea
-					if (userAnswer != '') {
-						// see if user input matches real answer
-						function checkAnswer(){
-							// converts to lowercase and removes whitespace to be mobile friendly
-							if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
-								// display right answer in modal
-								modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
-								score++; // increase score if correct
-							} else {
-								modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
+					if (chosenCategory == 'All') {
+						var rightAnswer = topicData[topicPosition]['questions'][(progressCounter)]['answer'];
+						// console.log('user answer: ' + userAnswer);
+						// basic validation. Show modal if there's a value in textarea
+						if (userAnswer != '') {
+							// see if user input matches real answer
+							function checkAnswer(){
+								// converts to lowercase and removes whitespace to be mobile friendly
+								if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
+									// display right answer in modal
+									modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
+									score++; // increase score if correct
+								} else {
+									modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
+								}
 							}
-						}
-						checkAnswer(); // call above function. Useful if I move the code block somewhere else
+							checkAnswer(); // call above function. Useful if I move the code block somewhere else
 
-					} else {
-						errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
-					}
+						}
+						else {
+							errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
+						}
+					} // end all category
+
+					// if there is a specified category ggg
+					else {
+						var rightAnswer = topicDataFilteredCategory[(progressCounter)]['answer'];
+						// basic validation. Show modal if there's a value in textarea
+						if (userAnswer != '') {
+							// see if user input matches real answer
+							function checkAnswer(){
+								// converts to lowercase and removes whitespace to be mobile friendly
+								if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
+									// display right answer in modal
+									modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
+									score++; // increase score if correct
+								} else {
+									modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
+								}
+							}
+							checkAnswer(); // call above function. Useful if I move the code block somewhere else
+
+						}
+						else {
+							errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
+						}
+
+					} // end
+
+
+
+
 				});
 			}
 			setProgressFieldValue(); // update progress value at top of screen
@@ -260,45 +426,88 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// update progress and score
 	function updateProgressCounter() {
-		// console.log('number of questions ' + topicData[topicPosition]['questions'].length);
-		// increase score if there are questions to ask
-		if(progressCounter < topicData[topicPosition]['questions'].length) {
-			progressCounter++; // +1
-			// if we're not on the last question
-			if (progressCounter <= topicData[topicPosition]['questions'].length - 1){
-				// console.log('new value for progressCounter: ' + progressCounter);
-				// set HTML content to new question value
-				document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][progressCounter]['question'];
-				//console.log('this should be a new question',topicData[topicPosition]['questions'][progressCounter]['question']);
-				setProgressFieldValue(); // update progress display at top of page
+		// if no category is specified
+		if (chosenCategory == 'All') {
+			// increase score if there are questions to ask
+			if(progressCounter < topicData[topicPosition]['questions'].length) {
+				progressCounter++; // +1
+				// if we're not on the last question
+				if (progressCounter <= topicData[topicPosition]['questions'].length - 1){
+					// console.log('new value for progressCounter: ' + progressCounter);
+					// set HTML content to new question value
+					document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][progressCounter]['question'];
+					//console.log('this should be a new question',topicData[topicPosition]['questions'][progressCounter]['question']);
+					setProgressFieldValue(); // update progress display at top of page
+				}
 			}
-		}
-		// if final question has already been asked
-		if (progressCounter == topicData[topicPosition]['questions'].length) {
-			console.log('Progress report: game over');
-			// content of score page
-			var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
-				+ '<br>Category: ... Coming Soon <br>'
-				+ '<strong>Score</strong>: ' + score + ' out of ' + topicData[topicPosition]['questions'].length;
-			// lets other loops know the end game sequence is active.
-			// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
-			final = true;
-			modalGenerator(scoreMessage, 'Continue'); // should I make a 3rd var for desitnation?
+			// if final question has already been asked
+			if (progressCounter == topicData[topicPosition]['questions'].length) {
+				console.log('Progress report: game over');
+				// content of score page
+				var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
+					+ '<br>Category: ' + chosenCategory
+					+ '<br><strong>Score</strong>: ' + score + ' out of ' + topicData[topicPosition]['questions'].length;
+				// lets other loops know the end game sequence is active.
+				// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
+				final = true;
+				modalGenerator(scoreMessage, 'Continue'); // should I make a 3rd var for desitnation?
+			}
+		} // end all category
+		// if specific category is chosen
+		else {
+			if(progressCounter < topicDataFilteredCategory.length) {
+				progressCounter++; // +1
+				// if we're not on the last question
+				if (progressCounter <= topicDataFilteredCategory.length - 1){
+					// console.log('new value for progressCounter: ' + progressCounter);
+					// set HTML content to new question value
+					document.querySelector('.questionHolder').innerHTML = topicDataFilteredCategory[progressCounter]['question'];
+					//console.log('this should be a new question',topicData[topicPosition]['questions'][progressCounter]['question']);
+					setProgressFieldValue(); // update progress display at top of page
+				}
+			}
+			// if final question has already been asked
+			if (progressCounter == topicDataFilteredCategory.length) {
+				console.log('Progress report: game over');
+				// content of score page
+				var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
+					+ '<br>Category: ' + chosenCategory
+					+ '<br><strong>Score</strong>: ' + score + ' out of ' + topicDataFilteredCategory.length;
+				// lets other loops know the end game sequence is active.
+				// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
+				final = true;
+				modalGenerator(scoreMessage, 'Continue'); // should I make a 3rd var for desitnation?
+			}
 		}
 
 	}
 
 	// update progress field contents
 	function setProgressFieldValue() {
-		// update counter at top of page
-		if (document.querySelector('.progress')) {
-			document.querySelector('.progress').innerHTML = 'Progress: '
-				+ (Number(progressCounter) + 1) + ' / ' + topicData[topicPosition]['questions'].length;
+		if (chosenCategory == 'All') {
+			// update counter at top of page
+			if (document.querySelector('.progress')) {
+				document.querySelector('.progress').innerHTML = 'Progress: '
+					+ (Number(progressCounter) + 1) + ' / ' + topicData[topicPosition]['questions'].length;
+			}
+			// clear the answer textarea if it exists on the page
+			if(document.querySelector('#answerRow textarea')){
+				document.querySelector('#answerRow textarea').value = '';
+			}
 		}
-		// clear the answer textarea if it exists on the page
-		if(document.querySelector('#answerRow textarea')){
-			document.querySelector('#answerRow textarea').value = '';
+		// if specific category is chosen
+		else {
+			// update counter at top of page
+			if (document.querySelector('.progress')) {
+				document.querySelector('.progress').innerHTML = 'Progress: '
+					+ (Number(progressCounter) + 1) + ' / ' + topicDataFilteredCategory.length;
+			}
+			// clear the answer textarea if it exists on the page
+			if(document.querySelector('#answerRow textarea')){
+				document.querySelector('#answerRow textarea').value = '';
+			}
 		}
+
 	}
 
 	// clear quiz content from container div and load start screen

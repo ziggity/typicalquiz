@@ -22,9 +22,15 @@
 		},
 		{
 			"question":"Setup the basic git user parameters on an individual or global level",
-			"hint" : "this is a hint for q3",
+			"hint" : "{this is a hint for q3",
 			"answer" : "git config",
 			"category" : "git 101"
+		},
+		{
+			"question":"Checkout and create a branch",
+			"hint" : "{this is a hint for q4",
+			"answer" : "git checkout -b",
+			"category" : "git 201"
 		}
 	]
 },
