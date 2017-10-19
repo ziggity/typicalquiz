@@ -18,6 +18,21 @@ document.addEventListener('DOMContentLoaded', function(){
 		'pleaseAnswer' : 'At least try and answer the question, alright?',
 		'endQuiz' : 'Are you sure you want to end your quiz?'
 	}
+	var gameSession; // initialize local array for holding goals
+	// if localStorage is found, load it into the variable
+	if (readLocalStorage('gameSession')) {
+	    console.log('Found existing localstorage values.',readLocalStorage('gameSession'));
+	    gameSession = readLocalStorage('gameSession');
+	  }
+	// otherwise make a blank array
+	else {
+	    console.log('No local storage, starting fresh.');
+	    gameSession = [];
+	}
+	var timeStart;
+	var timeEnd;
+	var numberOfQuestions;
+	fillStats();
 
 	// load questions and topics as soon as the page is ready
 	function doAjax() {
@@ -46,12 +61,12 @@ document.addEventListener('DOMContentLoaded', function(){
 			console.log("You clicked topic menu",this.id);
 			expandMenu(this.id); //pass id to menu function
 		});
-
+		// open category menu when clicked
 		document.querySelector(".secondMenu").addEventListener("click", function(event){
 				if (!document.querySelector("#categoryMenu").classList.contains('disabled')) {
 					event.preventDefault(); // stop button standard action
 					console.log("You clicked categoryMenu",this.id);
-					expandSecondMenu(this.id); //pass id to menu function
+					expandMenu(this.id); //pass id to menu function
 				}
 			});
 	}
@@ -59,23 +74,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// when button is clicked, toggle visibility of menu items. It's not fully reusable (yet)
 	function expandMenu(target) {
-
-		// change CSS visibility for specified menu ID
-		document.querySelector("#"+target+"+.dropdownList").classList.toggle("show");
-
-		// hide menu if anything other than button is clicked
-		document.querySelector('body').addEventListener('click', function(event){
-			// if topic menu exists on page...
-			if (document.querySelector("#"+target+"+ .dropdownList")) {
-				// if target isn't a button turn off show CSS class
-				if (!event.target.matches('button')) {
-					document.querySelector("#"+target+"+ .dropdownList").classList.remove("show");
-				}
-			}
-		});
-	} // end expandMenu
-
-	function expandSecondMenu(target) {
 
 		// change CSS visibility for specified menu ID
 		document.querySelector("#"+target+"+.dropdownList").classList.toggle("show");
@@ -260,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// grab quiz page body and fire off question and score system. This is the big one.
 	function startQuiz(){
+		timeStart = new Date().getTime();
 		// load quiz screen via AJAX
 		var xmlhttp = new XMLHttpRequest(); // new request
 		var url = 'assets/data/questionScreen.html'; // data source. It's just an HTML page
@@ -450,6 +449,8 @@ document.addEventListener('DOMContentLoaded', function(){
 				// lets other loops know the end game sequence is active.
 				// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
 				final = true;
+				timeEnd = new Date().getTime();
+				gatherStats(); // send session stats to localStorage
 				modalGenerator(scoreMessage, 'Continue'); // should I make a 3rd var for desitnation?
 			}
 		} // end all category
@@ -476,6 +477,8 @@ document.addEventListener('DOMContentLoaded', function(){
 				// lets other loops know the end game sequence is active.
 				// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
 				final = true;
+				timeEnd = new Date().getTime();
+				gatherStats(); // send session stats to localStorage
 				modalGenerator(scoreMessage, 'Continue'); // should I make a 3rd var for desitnation?
 			}
 		}
@@ -489,6 +492,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			if (document.querySelector('.progress')) {
 				document.querySelector('.progress').innerHTML = 'Progress: '
 					+ (Number(progressCounter) + 1) + ' / ' + topicData[topicPosition]['questions'].length;
+					numberOfQuestions = topicData[topicPosition]['questions'].length;
 			}
 			// clear the answer textarea if it exists on the page
 			if(document.querySelector('#answerRow textarea')){
@@ -501,6 +505,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			if (document.querySelector('.progress')) {
 				document.querySelector('.progress').innerHTML = 'Progress: '
 					+ (Number(progressCounter) + 1) + ' / ' + topicDataFilteredCategory.length;
+					numberOfQuestions = topicDataFilteredCategory.length;
 			}
 			// clear the answer textarea if it exists on the page
 			if(document.querySelector('#answerRow textarea')){
@@ -577,6 +582,107 @@ document.addEventListener('DOMContentLoaded', function(){
 			});
 		}
 
+	} // end modal generator
+
+
+	// save to localStorage
+	function saveLocalStorage(itemName) {
+		window.localStorage.setItem('gameSession', JSON.stringify(itemName));
+		console.log('prove it exists by typing:','JSON.parse(window.localStorage.getItem(\'' + 'gameSession' + '\'));');
 	}
+
+	  // read from localStorage
+	  function readLocalStorage(itemName) {
+	    return JSON.parse(window.localStorage.getItem(itemName));
+	  }
+
+	// collects data to send to localStorage
+	function gatherStats(){
+		console.log('Info sent to localStorage');
+	  	// When game is over, push stats to array
+		gameSession.push({
+			'date' : formatDate(),
+			'score' : score,
+			'outOf' : numberOfQuestions,
+			'duration' : [timeStart, timeEnd, millisToMinutesAndSeconds(Math.abs(timeStart - timeEnd))],
+			'topic' : topicData[topicPosition]['name'],
+			'category' : chosenCategory
+		});
+		// send array to localStorage function
+		saveLocalStorage(gameSession);
+	}
+
+	// date and time
+	function formatDate() {
+	    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+	    var d = new Date();
+	    var dateNow = d.getDate();
+	    var monthNow = d.getMonth();
+	    var yearNow = d.getFullYear();
+	    var timeNow = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+	    return months[monthNow] +' '+ dateNow + ', ' + yearNow;
+  	}
+
+  	// miliseconds to seconds
+  	function millisToMinutesAndSeconds(millis) {
+	  var minutes = Math.floor(millis / 60000);
+	  var seconds = ((millis % 60000) / 1000).toFixed(0);
+	  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+	}
+
+	// fill out stats blocks
+	function fillStats() {
+		if (readLocalStorage('gameSession')) {
+			console.log('gameSession', gameSession);
+			document.querySelector('.stats .quizSessions span').innerHTML = gameSession.length;
+			document.querySelector('.stats .avgScore span').innerHTML = calculateScore();
+			document.querySelector('.stats .avgDuration span').innerHTML = calculateDuration();
+			//document.querySelector('.stats .fastestRound span').innerHTML = calcualteFastest();
+			//document.querySelector('.stats .slowestRound span').innerHTML = gameSession.length;
+		} else {
+			document.querySelector('.stats ul').innerHTML = '<span class=\'dim\'>No games played yet!</span>';
+		}
+	}
+
+	function calculateScore() {
+		var scoreHolder = 0;
+		for(var i = 0;i<gameSession.length;i++){
+			scoreHolder += gameSession[i]['score'] / gameSession[i]['outOf'];
+			console.log(scoreHolder, "scoreHolder current");
+		}
+		console.log(scoreHolder / gameSession.length,'scoreholder / gamelesson length');
+		scoreHolder = scoreHolder / gameSession.length * 100 + '%';
+		console.log(scoreHolder);
+		return scoreHolder;
+	}
+
+	function calculateDuration() {
+		var scoreHolder = 0;
+		for(var i = 0;i<gameSession.length;i++){
+			scoreHolder += gameSession[i]['duration'][1] - gameSession[i]['duration'][0];
+			console.log(scoreHolder, "scoreHolder current");
+		}
+		scoreHolder = scoreHolder / gameSession.length;
+		console.log(scoreHolder, 'avg duration here');
+		return millisToMinutesAndSeconds(scoreHolder);
+	}
+
+	function calcualteFastest() {
+		var scoreHolder = 0;
+		for(var i = 0;i<gameSession.length;i++){
+			scoreHolder += gameSession[i]['duration'][1] - gameSession[i]['duration'][0];
+			console.log(scoreHolder, "scoreHolder current");
+		}
+		scoreHolder = scoreHolder / gameSession.length;
+		console.log(scoreHolder, 'avg duration here');
+		return millisToMinutesAndSeconds(scoreHolder);
+	}
+
+	function calcualteSlowest() {
+		var scoreHolder = 0;
+
+		return millisToMinutesAndSeconds(scoreHolder);
+	}
+
 // end fake document ready
 }, false);

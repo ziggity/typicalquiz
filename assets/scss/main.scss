@@ -324,6 +324,25 @@ button {
 	}
 }
 
+.stats {
+	float: right;
+    background: #3f1f4b;
+    padding: 0 20px;
+    border-top: 1rem solid #4f265e;
+    border-bottom: 1rem solid #4f265e;
+    margin-top: 2rem;
+    ul {
+    	margin: 0 0 1rem;
+    	padding: 0;
+    	li {
+    		list-style: none;
+    	}
+    	span {
+    		margin-left: .5rem;
+    	}
+    }
+}
+
 @media only screen and (max-width: 500px) {
 	.sectionHeader {
 		text-align: center;
