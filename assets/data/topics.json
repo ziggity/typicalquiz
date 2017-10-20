@@ -70,5 +70,119 @@
 		}
 
 	]
+},
+{
+	"name":"Code Fellows 201 Topics",
+	"description":"Overview of things I should know to skip 201 level",
+	"questions": [
+		{
+			"question":"Attach a 4 second keyframe animation for an animation named fancyfade",
+			"hint" : "Write property, value, time endline",
+			"answer" : "animation: fancyfade 4s;",
+			"category" : "css"
+		},
+		{
+			"question":"Create a 4 second transition for padding",
+			"hint" : "Write property, value, time endline",
+			"answer" : "transition: padding 4s;",
+			"category" : "css"
+		},
+		{
+			"question":"Please fill in the blank ___ only screen and (min-width: 35em){}",
+			"hint" : "Write property",
+			"answer" : "@media",
+			"category" : "css"
+		},
+		{
+			"question":"Name the 5 datatypes in Javascript. Write without commas.",
+			"hint" : "bunns",
+			"answer" : "boolean undefined number null string",
+			"category" : "javascript"
+		},
+		{
+			"question":"A property containing a function definition is a description of what?",
+			"hint" : "Can change object property values and can make calculations based on specified properties",
+			"answer" : "method",
+			"category" : "javascript"
+		},
+		{
+			"question":"Fill in the blanks for an AJAX success condition (this.readyState == __ && this.status == ___ ){}",
+			"hint" : "no commas required",
+			"answer" : "4 200",
+			"category" : "javascript"
+		},
+		{
+			"question":"Basic command for localStorage",
+			"hint" : "no values or method parenthesis needed",
+			"answer" : "window.localStorage",
+			"category" : "javascript"
+		},
+		{
+			"question":"Method to place an item into localStorage. window.localStorage._____",
+			"hint" : "no values or method parenthesis needed",
+			"answer" : "setItem",
+			"category" : "javascript"
+		},
+		{
+			"question":"Method to retrieve an item from localStorage. window.localStorage._____",
+			"hint" : "no values or method parenthesis needed",
+			"answer" : "getItem",
+			"category" : "javascript"
+		},
+		{
+			"question":"In MVC pattern, this defines the data structure",
+			"hint" : "MVC",
+			"answer" : "model",
+			"category" : "javascript"
+		},
+		{
+			"question":"In MVC pattern, this defines display",
+			"hint" : "MVC",
+			"answer" : "view",
+			"category" : "javascript"
+		},
+		{
+			"question":"In MVC pattern, this updates the app in response to user input",
+			"hint" : "MVC",
+			"answer" : "controller",
+			"category" : "javascript"
+		},
+		{
+			"question":"Delete a file. There's no undo, be careful.",
+			"hint" : "variations include __ -rf",
+			"answer" : "rm",
+			"category" : "bash"
+		},
+		{
+			"question":"Copy a file and move it to a new directory",
+			"hint" : "Takes two arguments: the file being copied and the destination. ___ myFile ~/Sites",
+			"answer" : "cp",
+			"category" : "bash"
+		},
+		{
+			"question":"Make a folder",
+			"hint" : "Does what it says",
+			"answer" : "mkdir",
+			"category" : "bash"
+		},
+		{
+			"question":"Show the path to the path to the current directory",
+			"hint" : "Present Working Directory",
+			"answer" : "pwd",
+			"category" : "bash"
+		},
+		{
+			"question":"Create a new file inside the current directory",
+			"hint" : "____ newFile.txt",
+			"answer" : "touch",
+			"category" : "bash"
+		},
+		{
+			"question":"Move files from one place to another",
+			"hint" : "_____ myFile.txt ~/Sites/folder",
+			"answer" : "mv",
+			"category" : "bash"
+		}
+	]
 }
 ]

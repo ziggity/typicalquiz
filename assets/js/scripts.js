@@ -274,16 +274,6 @@ document.addEventListener('DOMContentLoaded', function(){
 	    		setTopicHeader(); // set topic name
 	    		setCategoryHeader(); // set category name
 
-				/* categoryconversion: filter topicData to contain only the selected category. Note, this means toggling random might
-				need to clear category menu also */
-				/* somewhere...
-					topicData[topicPosition]['questions'][i]['category'];
-					make new array of questions that match chosen cateory. do live filter?
-					add u to global scope.
-					add onclick to set global currentCategory var from menu
-					for loop to determine if questions[i]['category'] = currentCategory
-					change it here and in nextQuestion()
-				*/
 				// if no category is chosen, proceed in with simple question asking
 				if (chosenCategory == 'All') {
 					// prefill question one from current topic data
@@ -303,9 +293,6 @@ document.addEventListener('DOMContentLoaded', function(){
 					}
 					console.log(topicDataFilteredCategory,'show me what you got, topicDataFilteredCategory.');
 					document.querySelector('.questionHolder').innerHTML = topicDataFilteredCategory[0]['question'];
-					/* current issue. filteredcategory is a ghetto clone and only has question data, not hints, etc.
-					I need to fill it with the same content and structure as the normal array for the rest of the all to function.
-					But I can still feel good because it's almost there. I've come a long way. */
 				}
 
 
@@ -325,22 +312,7 @@ document.addEventListener('DOMContentLoaded', function(){
 					nextQuestion(); // load next question without changing score
 				});
 
-				// turn on random order
-
-				/*document.querySelector('.random').addEventListener('click', function(){
-					var randomDiv = document.querySelector('.random');
-					randomDiv.classList.toggle('active');
-					if (random) {
-						random = false;
-						console.log('Random is off!');
-						document.querySelector('.random span').innerHTML = 'Random Off';
-					} else {
-						random = true;
-						console.log('Random is on!');
-						document.querySelector('.random span').innerHTML = 'Random On';
-					}
-				});
-				*/
+				// if random boolean is enabled
 				if (random) {
 					document.querySelector('.random span').innerHTML = 'Random On';
 				} else {
@@ -374,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function(){
 						}
 					} // end all category
 
-					// if there is a specified category ggg
+					// if there is a specified category
 					else {
 						var rightAnswer = topicDataFilteredCategory[(progressCounter)]['answer'];
 						// basic validation. Show modal if there's a value in textarea
@@ -398,9 +370,6 @@ document.addEventListener('DOMContentLoaded', function(){
 						}
 
 					} // end
-
-
-
 
 				});
 			}
@@ -643,19 +612,20 @@ document.addEventListener('DOMContentLoaded', function(){
 			document.querySelector('.stats ul').innerHTML = '<span class=\'dim\'>No games played yet!</span>';
 		}
 	}
-
+	// perform math before sending to localStorage
 	function calculateScore() {
 		var scoreHolder = 0;
 		for(var i = 0;i<gameSession.length;i++){
 			scoreHolder += gameSession[i]['score'] / gameSession[i]['outOf'];
 			console.log(scoreHolder, "scoreHolder current");
 		}
-		console.log(scoreHolder / gameSession.length,'scoreholder / gamelesson length');
-		scoreHolder = scoreHolder / gameSession.length * 100 + '%';
-		console.log(scoreHolder);
+		// console.log(scoreHolder / gameSession.length,'scoreholder / gamelesson length');
+		scoreHolder = (scoreHolder / gameSession.length * 100).toFixed(2) + '%';
+		// console.log(scoreHolder);
 		return scoreHolder;
 	}
 
+	// subtract timestamps to determine how log the session was
 	function calculateDuration() {
 		var scoreHolder = 0;
 		for(var i = 0;i<gameSession.length;i++){
@@ -663,10 +633,10 @@ document.addEventListener('DOMContentLoaded', function(){
 			console.log(scoreHolder, "scoreHolder current");
 		}
 		scoreHolder = scoreHolder / gameSession.length;
-		console.log(scoreHolder, 'avg duration here');
+		//console.log(scoreHolder, 'avg duration here');
 		return millisToMinutesAndSeconds(scoreHolder);
 	}
-
+	// loop through session data to determine fastest session
 	function calcualteFastest() {
 		var scoreHolder = 0;
 		for(var i = 0;i<gameSession.length;i++){
@@ -674,13 +644,13 @@ document.addEventListener('DOMContentLoaded', function(){
 			console.log(scoreHolder, "scoreHolder current");
 		}
 		scoreHolder = scoreHolder / gameSession.length;
-		console.log(scoreHolder, 'avg duration here');
+		//console.log(scoreHolder, 'avg duration here');
 		return millisToMinutesAndSeconds(scoreHolder);
 	}
 
+	// Placeholder. Not being used.
 	function calcualteSlowest() {
 		var scoreHolder = 0;
-
 		return millisToMinutesAndSeconds(scoreHolder);
 	}
 
