@@ -1,30 +1,40 @@
-<span class="boldHeading topic">[Topic Name]</span>
-<span class="boldHeading category">[Category Name]</span>
-<div class="row narrow">
-    <h3 class="subTitle progress">Progress: </h3>
-    <h3 class="subTitle random">
-        <span></span></h3>
-</div>
+<div id="questionScreen">
+    <div class="container" id="headLinks">
+        <span class="boldHeading topic">[Topic Name]</span>
+        <span class="boldHeading category">[Category Name]</span>
+        <div class="row narrow">
+            <h3 class="subTitle progress">Progress: </h3>
+            <h3 class="subTitle random"><span></span></h3>
+        </div>
+    </div>
 
-<div class="topBox">
-    <div class="row" id="questionRow">
-        <div class="close"></div>
-        <h2 class="sectionHeader">Question</h2>
-        <div class="questionHolder"></div>
+    <div class="container" id="questionScreenContainer">
+        <div class="topBox">
+
+            <div class="row" id="questionRow">
+                <div class="close"></div>
+                <h2 class="sectionHeader">Question</h2>
+                <div class="questionHolder"></div>
+            </div>
+        </div>
+        <div class="lowerBox">
+            <div class="row" id="answerRow">
+                <label class="sectionHeader" for="yourAnswer">Your Answer</label>
+                <textarea id="yourAnswer"></textarea>
+            </div>
+        </div>
+        <div class="userButtons">
+            <div class="row full two">
+                <button class="skip">Skip</button>
+                <button class="hint">Show Hint</button>
+            </div>
+            <div class="row full">
+                <button class="answer">Check Answer</button>
+            </div>
+        </div>
     </div>
-</div>
-<div class="lowerBox">
-    <div class="row" id="answerRow">
-        <label class="sectionHeader" for="yourAnswer">Your Answer</label>
-        <textarea id="yourAnswer"></textarea>
+    <div class="upperHolder">
     </div>
-</div>
-<div class="userButtons">
-    <div class="row full two">
-        <button class="skip">Skip</button>
-        <button class="hint">Show Hint</button>
-    </div>
-    <div class="row full">
-        <button class="answer">Check Answer</button>
+    <div class="lowerHolder">
     </div>
 </div>

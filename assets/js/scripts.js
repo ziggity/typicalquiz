@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			if (this.readyState == 4 && this.status == 200) {
 	    		var quizBody = this.responseText; // holds entire JSON
 	    		// render HTML into container. A poor man's single page application.
-	    		document.querySelector('.container').innerHTML = quizBody;
+	    		document.querySelector('body').innerHTML = quizBody;
 	    		// How do I do this more intelligently?
 
 	    		setTopicHeader(); // set topic name

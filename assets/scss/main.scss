@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans:300');
 
 $mainHighlight : #90D3F3;
-$subTitle : rgba(255,255,255,.5);
+$subTitle : rgba(255,255,255,.9);
 $lightMain: #4E265E;
 $darkMain: #3E1E4B;
 $transWhite: rgba(255,255,255,.2);
-$transWhiteHover: rgba(255,255,255,.1);
+$transWhiteHover: rgba(255,255,255,.9);
 $p1: 10px;
 $boldFont: 'Alfa Slab One';
 
@@ -14,7 +14,8 @@ $boldFont: 'Alfa Slab One';
 }
 
 body {
-	background: black;
+	margin: 0;
+	background: #172b46;
 	color: white;
 	font-family: 'Open Sans';
 	font-weight: lighter;
@@ -25,17 +26,32 @@ body {
 h3,h2 {
 	margin-top: 0;
 }
+
+.upperHolder {
+	background: #172A45;
+	min-height: 50vh;
+}
+.lowerHolder {
+    background: url(../images/bg.png);
+    height: 50vh;
+    .container {
+    	padding-top: 1rem;
+    }
+}
 .container {
-	max-width: 1000px;
+	// max-width: 1000px;
 	margin: auto;
+	max-width: 26rem;
+    padding-right: 25rem;
 }
 .mainTitle {
 	text-align: center;
 	color: $mainHighlight;
+	color: rgba(255,255,255,.3);
 	font-family: $boldFont;
 	font-weight: normal;
     letter-spacing: .03em;
-    font-size: 2.5em;
+    font-size: 4rem;
     margin: 0;
 }
 .subTitle {
@@ -63,11 +79,14 @@ h3,h2 {
 	font-family: Alfa Slab One;
     font-weight: lighter;
     letter-spacing: .04em;
+    &.dark {
+    	color: #172A45;
+    }
 }
 
 .topBox {
-	background: $lightMain;
-	padding: $p1;
+	// background: $lightMain;
+	padding: $p1 0;
 }
 
 .topBox, .lowerBox {
@@ -81,22 +100,29 @@ h3,h2 {
 }
 
 .lowerBox {
-	background: $darkMain;
-	padding: $p1;
+	// background: $darkMain;
+	padding: $p1 0;
 }
 
 button {
 	border: none;
-	background: $transWhite;
+	// background: $transWhite;
+	background: #D8D8D8;
 	font-size: 20px;
 	font-weight: normal;
-	color: white;
+	color: #172A45;
 	padding: $p1;
+	box-shadow: 2px 3px 3px 0 rgba(0,0,0,.48);
 	&.start {
 		//color: $darkMain;
 		font-weight: bold;
 		width: 100%;
-	    background: $transWhite;
+	    // background: $transWhite;
+	    background: #3AC48E;
+	    color: white;
+	    &:hover {
+	    	background: darken(#3AC48E, 10%);
+	    }
 	}
 	&:hover {
 		cursor: pointer;
@@ -114,12 +140,16 @@ button {
 }
 .userButtons {
 	padding: 0;
-	background: $darkMain;
+	// background: #5b687b;
 	button {
-		background: #72527e;
+		background: #5b687b;
 		&:hover {
 			//background: lighten($darkMain,10%);
-			background: #795886;
+			background: darken(#5b687b, 10%);
+		}
+		&.answer {
+			background: #172b46;
+    		color: white;
 		}
 	}
 }
@@ -129,7 +159,7 @@ button {
 }
 
 .row {
-	margin-bottom: 20px;
+	// margin-bottom: 20px;
 	&.full {
 	    display: table;
     	width: 100%;
@@ -160,7 +190,6 @@ button {
 		background: none;
 	    border: none;
 	    width: 100%;
-	    color: white;
 	    font-size: 18px;
 	    min-height: 3rem;
 	}
@@ -172,27 +201,32 @@ button {
 
 .dropdown {
 	position: relative;
-    display: inline-block;
+    // display: inline-block;
+    display: block;
     button {
-    	width: 200px;
+    	// width: 200px;
+    	width: 100%;
+    	display: block;
     }
 }
 .dropdownList {
 	display: none;
 	position: absolute;
-	background: rgba(255, 255, 255, 0.9);
-    min-width: 200px;
+	background: white;
+    z-index: 1;
+    width: 100%;
     box-shadow: 2px 3px 3px 0px rgba(0, 0, 0, 0.48);
 	&.show {display:block;}
 	a {
 	    display: block;
 	    padding: 10px 20px;
-	    color: black;
+	    color: #172b46;
+    	border-top: 1px solid rgba(23, 43, 70, 0.11);
 	    text-decoration: none;
 	    font-weight: normal;
 	    &:hover {
 	    	background: white;
-    		color: #3f1f4b;
+	    	color: #3bc48e;
     		cursor: pointer;
 	    }
 	}
@@ -218,6 +252,7 @@ button {
 
 .messageBox {
 	top: 20%;
+	z-index: 2;
     position: fixed;
     left: 50%;
     //transform: translate(-50%, -50%);
@@ -228,14 +263,14 @@ button {
     .row.pad {
     	font-size: 1.5rem;
 	    text-align: center;
-	    padding: 3rem 1rem;
+	    padding: 2rem 1rem 4rem;
     }
     .inner {
     	position: absolute;
 	    left: calc(50% - 250px);
 	    top: 20px;
 	    width: 500px;
-	    background: rgba(0, 0, 0, 0.85);
+	    background: rgba(0, 0, 0, 0.9);
 	    color: white;
 	    z-index: 1;
     }
@@ -259,7 +294,7 @@ button {
 	color: red;
 }
 .questionCount {
-	margin-left: 2rem;
+	// margin-left: 2rem;
     color: rgba(255, 255, 255, 0.42);
 }
 .progress {
@@ -294,7 +329,7 @@ button {
 .randomHolder {
 	display: inline-block;
 	float: right;
-	line-height: 3rem;
+	// line-height: 3rem;
 	img {
 		opacity: 0.6;
 	}
@@ -324,13 +359,19 @@ button {
 	}
 }
 
+.description {
+	padding: 0 0 20px;
+}
+
 .stats {
-	float: right;
-    background: #3f1f4b;
-    padding: 0 20px;
-    border-top: 1rem solid #4f265e;
-    border-bottom: 1rem solid #4f265e;
-    margin-top: 2rem;
+    background: #5b687b;
+    padding: 10px 20px 0;
+    position: absolute;
+    right: 15rem;
+    margin-top: -6rem;
+    .sectionHeader {
+    	margin-bottom: 1rem;
+    }
     ul {
     	margin: 0 0 1rem;
     	padding: 0;
@@ -343,7 +384,65 @@ button {
     }
 }
 
+.secondMenu {
+	background: white;
+	&.disabled {
+		background: whitesmoke;
+    	color: rgba(0, 0, 0, 0.51);
+    	opacity: 1;
+    	&:hover {
+    		cursor: not-allowed;
+    	}
+	}
+
+}
+
+.header {
+	width: 56rem;
+	padding: 2rem 0;
+}
+#headLinks {
+	padding-right: 0;
+    max-width: 40rem;
+    margin: auto;
+}
+#questionScreenContainer {
+	position: absolute;
+    left: calc(50% - 19rem);
+    background: white;
+    color: #172b46;
+    padding: 0;
+    margin: 10rem 0 0;
+    width: 39rem;
+    max-width: none;
+    z-index: 1;
+    .topBox, .lowerBox {
+    	padding: 10px;
+    }
+    .sectionHeader {
+    	color: hsla(0, 0%, 0%, 0.2);
+    }
+}
+
+#questionScreen {
+	.lowerHolder {
+		opacity: 0.8;
+	}
+}
 @media only screen and (max-width: 500px) {
+	.container {
+		padding-right: 0;
+	}
+	.header {
+		width: inherit;
+		padding: inherit;
+	}
+	.stats {
+		margin-top: 0;
+	    position: initial;
+	    padding: 10px;
+	    margin-bottom: 10px;
+	}
 	.sectionHeader {
 		text-align: center;
 	}
@@ -375,5 +474,13 @@ button {
 	}
 	#topicRow .lowerBox {
 		text-align: center;
+	}
+	#questionScreenContainer {
+		position: inherit;
+	    width: inherit;
+	    margin: 2rem 0;
+	}
+	.upperHolder {
+		min-height: inherit;
 	}
 }
