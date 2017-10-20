@@ -77,13 +77,13 @@
 	"questions": [
 		{
 			"question":"Attach a 4 second keyframe animation for an animation named fancyfade",
-			"hint" : "Write property, value, time endline",
+			"hint" : "Write property, value, time, endline",
 			"answer" : "animation: fancyfade 4s;",
 			"category" : "css"
 		},
 		{
 			"question":"Create a 4 second transition for padding",
-			"hint" : "Write property, value, time endline",
+			"hint" : "Write property, value, time, endline",
 			"answer" : "transition: padding 4s;",
 			"category" : "css"
 		},

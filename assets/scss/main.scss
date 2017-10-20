@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans:300');
 
 $mainHighlight : #90D3F3;
+$specialHiglight: #3bc48e;
 $subTitle : rgba(255,255,255,.9);
 $lightMain: #4E265E;
-$darkMain: #3E1E4B;
+$darkMain: #172b46;
 $transWhite: rgba(255,255,255,.2);
 $transWhiteHover: rgba(255,255,255,.9);
 $p1: 10px;
@@ -15,7 +16,7 @@ $boldFont: 'Alfa Slab One';
 
 body {
 	margin: 0;
-	background: #172b46;
+	background: $darkMain;
 	color: white;
 	font-family: 'Open Sans';
 	font-weight: lighter;
@@ -32,8 +33,9 @@ h3,h2 {
 	min-height: 50vh;
 }
 .lowerHolder {
-    background: url(../images/bg.png);
+    background: url(../images/bg-trans.png);
     height: 50vh;
+    background-color: $darkMain;
     .container {
     	padding-top: 1rem;
     }
@@ -148,7 +150,7 @@ button {
 			background: darken(#5b687b, 10%);
 		}
 		&.answer {
-			background: #172b46;
+			background: $darkMain;
     		color: white;
 		}
 	}
@@ -220,13 +222,13 @@ button {
 	a {
 	    display: block;
 	    padding: 10px 20px;
-	    color: #172b46;
+	    color: $darkMain;
     	border-top: 1px solid rgba(23, 43, 70, 0.11);
 	    text-decoration: none;
 	    font-weight: normal;
 	    &:hover {
 	    	background: white;
-	    	color: #3bc48e;
+	    	color: $specialHiglight;
     		cursor: pointer;
 	    }
 	}
@@ -415,7 +417,7 @@ button {
 	position: absolute;
     left: calc(50% - 19rem);
     background: white;
-    color: #172b46;
+    color: $darkMain;
     padding: 0;
     margin: 10rem 0 0;
     width: 39rem;
@@ -434,7 +436,18 @@ button {
 		opacity: 0.8;
 	}
 }
+
+.headerLinks {
+	position: absolute;
+    width: 100%;
+    margin-top: 10px;
+}
+
 @media only screen and (max-width: 500px) {
+	.headLinks {
+		position: inherit;
+		padding: 0 0.3rem;
+	}
 	.container {
 		padding-right: 0;
 	}
@@ -483,9 +496,40 @@ button {
 	#questionScreenContainer {
 		position: inherit;
 	    width: inherit;
-	    margin: 2rem 0;
+	    margin: 2rem 0 0;
 	}
 	.upperHolder {
 		min-height: inherit;
+	}
+	.lowerHolder {
+		background: $darkMain;
+	}
+	#questionScreen {
+		.lowerHolder {
+			background: currentColor;
+			height: auto;
+		}
+	}
+	.sectionHeader.dark {
+		color: white;
+	}
+	.row.full,.row.full button {
+		overflow: hidden;
+	}
+	.lowerHolder .container {
+		padding-top: 0;
+	}
+	.description:empty {
+		padding: 0;
+	}
+	#topicMenu {
+		background: $specialHiglight;
+		color: white;
+	}
+	.answer {
+		background: $specialHiglight;
+	}
+	.headerLinks {
+		position: initial;
 	}
 }
