@@ -21,18 +21,19 @@ document.addEventListener('DOMContentLoaded', function(){
 	var gameSession; // initialize local array for holding goals
 	// if localStorage is found, load it into the variable
 	if (readLocalStorage('gameSession')) {
-	    console.log('Found existing localstorage values.',readLocalStorage('gameSession'));
+	    console.log('Found existing localStorage values.',readLocalStorage('gameSession'));
 	    gameSession = readLocalStorage('gameSession');
 	  }
 	// otherwise make a blank array
 	else {
-	    console.log('No local storage, starting fresh.');
+	    console.log('No localStorage, starting fresh.');
 	    gameSession = [];
 	}
-	var timeStart;
-	var timeEnd;
-	var numberOfQuestions;
-	fillStats();
+	var timeStart; // will hold session starting timestamp
+	var timeEnd; // will hold session ending timestamp
+	var numberOfQuestions; // count of questions for stat page
+
+	fillStats(); // start by showing any existing stats
 
 	// load questions and topics as soon as the page is ready
 	function doAjax() {
@@ -295,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function(){
 					document.querySelector('.questionHolder').innerHTML = topicDataFilteredCategory[0]['question'];
 				}
 
+				document.querySelector('#yourAnswer').focus(); // give text input focus
 
 				// close button event listener
 				document.querySelector('.close').addEventListener('click', function(){
@@ -319,58 +321,18 @@ document.addEventListener('DOMContentLoaded', function(){
 					document.querySelector('.random span').innerHTML = 'Random Off';
 				}
 
-				// event listener for validating answer
+				// event listener for answer button
 				document.querySelector('.answer').addEventListener('click', function(){
-					var userAnswer = document.querySelector('#answerRow textarea').value;
-					if (chosenCategory == 'All') {
-						var rightAnswer = topicData[topicPosition]['questions'][(progressCounter)]['answer'];
-						// console.log('user answer: ' + userAnswer);
-						// basic validation. Show modal if there's a value in textarea
-						if (userAnswer != '') {
-							// see if user input matches real answer
-							function checkAnswer(){
-								// converts to lowercase and removes whitespace to be mobile friendly
-								if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
-									// display right answer in modal
-									modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
-									score++; // increase score if correct
-								} else {
-									modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
-								}
-							}
-							checkAnswer(); // call above function. Useful if I move the code block somewhere else
+					checkAnswer();
+				});
 
-						}
-						else {
-							errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
-						}
-					} // end all category
-
-					// if there is a specified category
-					else {
-						var rightAnswer = topicDataFilteredCategory[(progressCounter)]['answer'];
-						// basic validation. Show modal if there's a value in textarea
-						if (userAnswer != '') {
-							// see if user input matches real answer
-							function checkAnswer(){
-								// converts to lowercase and removes whitespace to be mobile friendly
-								if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
-									// display right answer in modal
-									modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
-									score++; // increase score if correct
-								} else {
-									modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
-								}
-							}
-							checkAnswer(); // call above function. Useful if I move the code block somewhere else
-
-						}
-						else {
-							errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
-						}
-
-					} // end
-
+				// event listener for enter key
+				document.querySelector('#yourAnswer').addEventListener('keypress', function(event){
+					if (event.keyCode == 13) {
+						event.preventDefault();
+						console.log('you pressed enter');
+						checkAnswer();
+					}
 				});
 			}
 			setProgressFieldValue(); // update progress value at top of screen
@@ -379,6 +341,59 @@ document.addEventListener('DOMContentLoaded', function(){
 	    xmlhttp.send(); // Engage!
 
 	} // end quiz. That was a big AJAX request...
+
+	// validate user answer
+	function checkAnswer(){
+		var userAnswer = document.querySelector('#answerRow textarea').value;
+		if (chosenCategory == 'All') {
+			var rightAnswer = topicData[topicPosition]['questions'][(progressCounter)]['answer'];
+			// console.log('user answer: ' + userAnswer);
+			// basic validation. Show modal if there's a value in textarea
+			if (userAnswer != '') {
+				// see if user input matches real answer
+				function checkAnswer(){
+					// converts to lowercase and removes whitespace to be mobile friendly
+					if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
+						// display right answer in modal
+						modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
+						score++; // increase score if correct
+					} else {
+						modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
+					}
+				}
+				checkAnswer(); // call above function. Useful if I move the code block somewhere else
+
+			}
+			else {
+				errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
+			}
+		} // end all category
+
+		// if there is a specified category
+		else {
+			var rightAnswer = topicDataFilteredCategory[(progressCounter)]['answer'];
+			// basic validation. Show modal if there's a value in textarea
+			if (userAnswer != '') {
+				// see if user input matches real answer
+				function checkAnswer(){
+					// converts to lowercase and removes whitespace to be mobile friendly
+					if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
+						// display right answer in modal
+						modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
+						score++; // increase score if correct
+					} else {
+						modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
+					}
+				}
+				checkAnswer(); // call above function. Useful if I move the code block somewhere else
+
+			}
+			else {
+				errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
+			}
+
+		} // end else
+	} // end check answer
 
 	// load new question from topicData JSON dump
 	function nextQuestion() {
@@ -518,15 +533,17 @@ document.addEventListener('DOMContentLoaded', function(){
 				+ message + '</div> <div class=\'row full multi\'><button class=\'yes\'>' + actionOne
 				+ '</button><button class=\'no\'>' + actionTwo +'</button></div></div>';
 			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
+			document.querySelector('.' + divClass).focus(); // give element focus
 			// If user clicks yes, return to main
 			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
-				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
-				returnToMain(); // O'Brian, one to beam up.
+			document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+			returnToMain(); // O'Brien, one to beam up.
 			});
 			// If user presses no, just cancel
 			document.querySelector('.' + divClass + ' .no').addEventListener('click', function(){
 				// self destruct the modal if no
 				document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
+				document.querySelector('#yourAnswer').focus(); // give text input focus
 			});
 		}
 		// If only one button option is passed
@@ -536,19 +553,39 @@ document.addEventListener('DOMContentLoaded', function(){
 				+ message + '</div> <div class=\'row full\'><button class=\'yes\'>'
 				+ actionOne + '</button></div></div>';
 			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
-			// if user clicks the button, delete the modal
-			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
-				document.querySelector('.container').removeChild(document.querySelector('.' + divClass)); // self destruct
-				// If caption matches answer box button. There are smarter ways to do this...
-				if (actionOne == 'Continue') {
-					// if final var has value, do endgame scenario
-					if (final) {
-						returnToMain();
-					} else {
-						nextQuestion();
-					}
+			document.querySelector('.' + divClass +' .yes').focus(); // give element focus
+
+			// close modal on enter keypress
+			document.querySelector('.' + divClass +' .yes').addEventListener('keypress', function(event){
+				console.log('I know you pressed something')
+				//console.log(event.keyCode)
+				if (event.keyCode == 13) {
+					event.preventDefault();
+					console.log('you pressed enter in a modal');
+					closeModal();
+					//69 = e;
 				}
 			});
+
+			// if user clicks the button, delete the modal
+			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
+				closeModal();
+				console.log('I will try to close modal')
+			});
+		}
+
+		function closeModal(){
+			document.querySelector('.container').removeChild(document.querySelector('.' + divClass)); // self destruct
+			// If caption matches answer box button. There are smarter ways to do this...
+			if (actionOne == 'Continue') {
+				// if final var has value, do endgame scenario
+				if (final) {
+					returnToMain();
+				} else {
+					nextQuestion();
+					document.querySelector('#yourAnswer').focus(); // give text input focus
+				}
+			}
 		}
 
 	} // end modal generator
