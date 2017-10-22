@@ -13,7 +13,9 @@ $boldFont: 'Alfa Slab One';
 .hide {
 	display: none!important;
 }
-
+:focus {
+	outline: none;
+}
 body {
 	margin: 0;
 	background: $darkMain;
@@ -394,9 +396,10 @@ button {
 .secondMenu {
 	background: white;
 	&.disabled {
-		background: whitesmoke;
-    	color: rgba(0, 0, 0, 0.51);
-    	opacity: 1;
+		background: #ffffff;
+	    color: rgba(0,0,0,.20);
+	    opacity: .9;
+	    box-shadow: 2px 3px 3px 0 rgba(0,0,0,.10);
     	&:hover {
     		cursor: not-allowed;
     	}
@@ -441,6 +444,18 @@ button {
 	position: absolute;
     width: 100%;
     margin-top: 10px;
+}
+
+#questionLimitRow {
+	margin-bottom: 1rem;
+    margin-top: -1rem;
+    input {
+    	height: 1rem;
+    	vertical-align: bottom;
+    	width: 2rem;
+	    height: 1rem;
+	    text-align: center;
+    }
 }
 
 @media only screen and (max-width: 500px) {

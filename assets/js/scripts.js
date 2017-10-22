@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function(){
 	var topicData; // empty var to hold question JSON
 	var topicDataRandom; // will hold the shuffled order
-	var topicDataBackup; // untampered copy of topicData order
+	var topicDataBackup, backup2; // untampered copy of topicData order
 	var topicDataFilteredCategory = []; // holds questions from current category
 	var topicPosition; // track the selected topic
 	var categoryPosition; // track current category position... I might need this to be an object later.
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var progressCounter = 0; // track number of questions asked
 	var score = 0; // track user's score
 	var final = null; // end status
-	var random = null;
+	var random = true; // boolean for shuffling questions
 	// collection of text strings
 	var textStrings = {
 		'selectTopic' : 'Please select a topic.',
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var gameSession; // initialize local array for holding goals
 	// if localStorage is found, load it into the variable
 	if (readLocalStorage('gameSession')) {
-	    console.log('Found existing localStorage values.',readLocalStorage('gameSession'));
+	    //console.log('Found existing localStorage values.',readLocalStorage('gameSession'));
 	    gameSession = readLocalStorage('gameSession');
 	  }
 	// otherwise make a blank array
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var timeStart; // will hold session starting timestamp
 	var timeEnd; // will hold session ending timestamp
 	var numberOfQuestions; // count of questions for stat page
+	var wrongAnswers = []; // hold all wrong answers
 
 	fillStats(); // start by showing any existing stats
 
@@ -44,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function(){
 			if (this.readyState == 4 && this.status == 200) {
 	    		topicData = JSON.parse(this.responseText); // holds entire JSON
 	    		topicDataBackup = topicData; // create backup
+	    		console.log('Topic data backup CLEAN', topicDataBackup);
 	    		topicDataRandom = topicData; // set random order to normal values... for now
+	    		console.log('Topicdata contents', topicData);
 	    		// console.log(topicData, 'untouched topicData');
 	    		populateTopic(); // fill Topic dropdown menu for user to choose
 	    	}
@@ -97,8 +100,19 @@ document.addEventListener('DOMContentLoaded', function(){
 		document.querySelector("#topicMenu + .dropdownList").classList.toggle("show");
 		//console.log("you clicked "+selection.innerHTML);
 		document.querySelector('.questionCount').innerHTML = count + ' Questions'; // total number of questions
-		document.querySelector('.randomStatus').innerText = 'Random Off'; // start with random off
-		document.querySelector('.randomHolder').classList.remove('hide'); // make visible
+		if(random){
+			// document.querySelector('.randomHolder').classList.add('active');
+			// document.querySelector('.randomStatus').innerText = 'Random On'; // start with random off
+			// randomToggle();
+			randomOn();
+			console.log('random is activated from setTopic');
+		} else {
+			// document.querySelector('.randomStatus').innerText = 'Random Off'; // start with random off
+			// document.querySelector('.randomHolder').classList.remove('active');
+			// randomToggle();
+			randomOff();
+		}
+		document.querySelector('.randomHolder').classList.remove('hide'); // make random toggle visible
 	}
 
 	// set topic name on active quiz page
@@ -239,23 +253,45 @@ document.addEventListener('DOMContentLoaded', function(){
 	document.querySelector('.randomHolder').addEventListener('click', function(){
 		if (random) {
 			random = false;
-			document.querySelector('.randomStatus').innerText = 'Random off';
-			document.querySelector('.randomHolder').classList.remove('active');
-			topicData = topicDataBackup; // reset topicData to the backup copy.
-			console.log(topicData[topicPosition]['questions']);
+			randomOff();
 		} else {
-			console.log(topicData[topicPosition]['questions'], 'untouched topicData');
 			random = true;
-			document.querySelector('.randomStatus').innerText = 'Random on';
-			document.querySelector('.randomHolder').classList.add('active');
+			randomOn();
+		}
+	});
+
+	// manipulate UI fields to communicate random status
+	function randomOn(){
+		document.querySelector('.randomStatus').innerText = 'Random on';
+		document.querySelector('.randomHolder').classList.add('active');
+		randomToggle();
+	}
+
+	function randomOff(){
+		document.querySelector('.randomStatus').innerText = 'Random off';
+		document.querySelector('.randomHolder').classList.remove('active');
+		randomToggle();
+	}
+
+	// turn random on or off
+	function randomToggle(){
+		console.log('in randomToggle function');
+		if (random) {
+			console.log('random var has value');
+			//var randomTopicHolder = topicDataRandom[topicPosition]['questions'];
 			var randomTopicHolder = topicDataRandom[topicPosition]['questions'];
 			console.log(randomTopicHolder,'normal order');
-			randomTopicHolder.sort(function (a, b) {return Math.random() - 0.5;})
+			randomTopicHolder.sort(function (a, b) {return Math.random() - 0.5;});
     		console.log(randomTopicHolder,'random order');
 			topicData = topicDataRandom;
 			console.log(topicData[topicPosition]['questions'],'topicData now random');
+		} else {
+			console.log('topicdata backup', topicDataBackup);
+			console.log('topicdata random', topicDataRandom);
+			topicData = topicDataBackup; // reset topicData to the backup copy.
+			console.log(topicData[topicPosition]['questions'],'topicData random is off');
 		}
-	});
+	}
 
 	// grab quiz page body and fire off question and score system. This is the big one.
 	function startQuiz(){
@@ -296,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function(){
 					document.querySelector('.questionHolder').innerHTML = topicDataFilteredCategory[0]['question'];
 				}
 
-				document.querySelector('#yourAnswer').focus(); // give text input focus
+				document.querySelector('#yourAnswer').focus(); // give text input focus when quiz starts
 
 				// close button event listener
 				document.querySelector('.close').addEventListener('click', function(){
@@ -330,8 +366,10 @@ document.addEventListener('DOMContentLoaded', function(){
 				document.querySelector('#yourAnswer').addEventListener('keypress', function(event){
 					if (event.keyCode == 13) {
 						event.preventDefault();
-						console.log('you pressed enter');
-						checkAnswer();
+						console.log('you pressed enter in text field');
+						if(!final){
+							checkAnswer();
+						}
 					}
 				});
 			}
@@ -345,54 +383,34 @@ document.addEventListener('DOMContentLoaded', function(){
 	// validate user answer
 	function checkAnswer(){
 		var userAnswer = document.querySelector('#answerRow textarea').value;
+		// if no category is specified
 		if (chosenCategory == 'All') {
 			var rightAnswer = topicData[topicPosition]['questions'][(progressCounter)]['answer'];
-			// console.log('user answer: ' + userAnswer);
-			// basic validation. Show modal if there's a value in textarea
-			if (userAnswer != '') {
-				// see if user input matches real answer
-				function checkAnswer(){
-					// converts to lowercase and removes whitespace to be mobile friendly
-					if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
-						// display right answer in modal
-						modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
-						score++; // increase score if correct
-					} else {
-						modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
-					}
-				}
-				checkAnswer(); // call above function. Useful if I move the code block somewhere else
-
-			}
-			else {
-				errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
-			}
 		} // end all category
 
 		// if there is a specified category
 		else {
 			var rightAnswer = topicDataFilteredCategory[(progressCounter)]['answer'];
-			// basic validation. Show modal if there's a value in textarea
-			if (userAnswer != '') {
-				// see if user input matches real answer
-				function checkAnswer(){
-					// converts to lowercase and removes whitespace to be mobile friendly
-					if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
-						// display right answer in modal
-						modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
-						score++; // increase score if correct
-					} else {
-						modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
-					}
-				}
-				checkAnswer(); // call above function. Useful if I move the code block somewhere else
-
-			}
-			else {
-				errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
-			}
-
 		} // end else
+
+		// basic validation. Show modal if there's a value in textarea
+		if (userAnswer != '') {
+			// see if user input matches real answer
+			function checkAnswer(){
+				// converts to lowercase and removes whitespace to be mobile friendly
+				if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
+					// display right answer in modal
+					modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
+					score++; // increase score if correct
+				} else {
+					modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
+				}
+			}
+			checkAnswer(); // call above function. Useful if I move the code block somewhere else
+		}
+		else {
+			errorGenerator(textStrings.pleaseAnswer); // if field is blank yell at the user
+		}
 	} // end check answer
 
 	// load new question from topicData JSON dump
@@ -430,6 +448,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
 					+ '<br>Category: ' + chosenCategory
 					+ '<br><strong>Score</strong>: ' + score + ' out of ' + topicData[topicPosition]['questions'].length;
+
 				// lets other loops know the end game sequence is active.
 				// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
 				final = true;
@@ -533,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				+ message + '</div> <div class=\'row full multi\'><button class=\'yes\'>' + actionOne
 				+ '</button><button class=\'no\'>' + actionTwo +'</button></div></div>';
 			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
-			document.querySelector('.' + divClass).focus(); // give element focus
+			document.querySelector('.' + divClass +' .yes').focus(); // give main action button focus
 			// If user clicks yes, return to main
 			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
 			document.querySelector('.container').removeChild(document.querySelector('.' + divClass));
@@ -553,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				+ message + '</div> <div class=\'row full\'><button class=\'yes\'>'
 				+ actionOne + '</button></div></div>';
 			document.querySelector('.container').appendChild(newDiv); // render div at bottom of container
-			document.querySelector('.' + divClass +' .yes').focus(); // give element focus
+			document.querySelector('.' + divClass +' .yes').focus(); // give main action button focus
 
 			// close modal on enter keypress
 			document.querySelector('.' + divClass +' .yes').addEventListener('keypress', function(event){
@@ -570,7 +589,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			// if user clicks the button, delete the modal
 			document.querySelector('.' + divClass +' .yes').addEventListener('click', function(){
 				closeModal();
-				console.log('I will try to close modal')
+				console.log('I will try to close modal');
 			});
 		}
 
@@ -639,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	// fill out stats blocks
 	function fillStats() {
 		if (readLocalStorage('gameSession')) {
-			console.log('gameSession', gameSession);
+			//console.log('gameSession', gameSession);
 			document.querySelector('.stats .quizSessions span').innerHTML = gameSession.length;
 			document.querySelector('.stats .avgScore span').innerHTML = calculateScore();
 			document.querySelector('.stats .avgDuration span').innerHTML = calculateDuration();
@@ -654,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		var scoreHolder = 0;
 		for(var i = 0;i<gameSession.length;i++){
 			scoreHolder += gameSession[i]['score'] / gameSession[i]['outOf'];
-			console.log(scoreHolder, "scoreHolder current");
+			//console.log(scoreHolder, "scoreHolder current");
 		}
 		// console.log(scoreHolder / gameSession.length,'scoreholder / gamelesson length');
 		scoreHolder = (scoreHolder / gameSession.length * 100).toFixed(2) + '%';
@@ -667,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		var scoreHolder = 0;
 		for(var i = 0;i<gameSession.length;i++){
 			scoreHolder += gameSession[i]['duration'][1] - gameSession[i]['duration'][0];
-			console.log(scoreHolder, "scoreHolder current");
+			// console.log(scoreHolder, "scoreHolder current");
 		}
 		scoreHolder = scoreHolder / gameSession.length;
 		//console.log(scoreHolder, 'avg duration here');
@@ -678,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		var scoreHolder = 0;
 		for(var i = 0;i<gameSession.length;i++){
 			scoreHolder += gameSession[i]['duration'][1] - gameSession[i]['duration'][0];
-			console.log(scoreHolder, "scoreHolder current");
+			// console.log(scoreHolder, "scoreHolder current");
 		}
 		scoreHolder = scoreHolder / gameSession.length;
 		//console.log(scoreHolder, 'avg duration here');
