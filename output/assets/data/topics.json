@@ -4,7 +4,7 @@
 	"resources" : [{
 		"name" : "TryGit",
 		"description" : "Interactive intro to basic git concepts",
-		"link" : "https://try.github.io/"
+		"links" : ["https://try.github.io/", "https://learngitbranching.js.org/"]
 	}],
 	"questions": [
 		{
@@ -57,13 +57,13 @@
 		},
 		{
 			"question":"Add remote repository named origin",
-			"hint" : "U2 sings about the species",
+			"hint" : "remote is the key",
 			"answer" : "git remote add origin",
 			"category" : "git 101"
 		},
 		{
 			"question":"Push code from local master branch to remote named origin and save parameters",
-			"hint" : "git from then to",
+			"hint" : "push to then from",
 			"answer" : "git push -u origin master",
 			"category" : "git 101"
 		},
