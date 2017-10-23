@@ -5,6 +5,7 @@ $specialHiglight: #3bc48e;
 $subTitle : rgba(255,255,255,.9);
 $lightMain: #4E265E;
 $darkMain: #172b46;
+$midGray: #5b687b;
 $transWhite: rgba(255,255,255,.2);
 $transWhiteHover: rgba(255,255,255,.9);
 $p1: 10px;
@@ -146,10 +147,10 @@ button {
 	padding: 0;
 	// background: #5b687b;
 	button {
-		background: #5b687b;
+		background: $midGray;
 		&:hover {
 			//background: lighten($darkMain,10%);
-			background: darken(#5b687b, 10%);
+			background: darken($midGray, 10%);
 		}
 		&.answer {
 			background: $darkMain;
@@ -455,6 +456,38 @@ button {
     	width: 2rem;
 	    height: 1rem;
 	    text-align: center;
+    }
+}
+
+.groupEnd {
+	margin-bottom: .5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    padding-bottom: .5rem;
+}
+
+#answerToggle {
+	font-size: 1rem;
+	color: $specialHiglight;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+#resultsList {
+	display: none;
+	margin: .5rem 0 -1rem;
+    text-align: left;
+    font-size: 1rem;
+    list-style: none;
+    padding: 0 .5rem;
+    overflow: auto;
+    max-height: 5rem;
+    background: rgba(255, 255, 255, 0.09);
+    &.show {
+    	display: block;
+    }
+    span {
+    	color: $midGray;
     }
 }
 

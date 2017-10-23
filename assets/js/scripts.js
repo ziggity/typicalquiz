@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var progressCounter = 0; // track number of questions asked
 	var score = 0; // track user's score
 	var final = null; // end status
-	var random = true; // boolean for shuffling questions
+	var random = false; // boolean for shuffling questions
 	// collection of text strings
 	var textStrings = {
 		'selectTopic' : 'Please select a topic.',
@@ -383,14 +383,17 @@ document.addEventListener('DOMContentLoaded', function(){
 	// validate user answer
 	function checkAnswer(){
 		var userAnswer = document.querySelector('#answerRow textarea').value;
+		var currentQuestion;
 		// if no category is specified
 		if (chosenCategory == 'All') {
 			var rightAnswer = topicData[topicPosition]['questions'][(progressCounter)]['answer'];
+			currentQuestion = topicData[topicPosition]['questions'][(progressCounter)]['question'];
 		} // end all category
 
 		// if there is a specified category
 		else {
 			var rightAnswer = topicDataFilteredCategory[(progressCounter)]['answer'];
+			currentQuestion = topicDataFilteredCategory[(progressCounter)]['question'];
 		} // end else
 
 		// basic validation. Show modal if there's a value in textarea
@@ -403,6 +406,11 @@ document.addEventListener('DOMContentLoaded', function(){
 					modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
 					score++; // increase score if correct
 				} else {
+					wrongAnswers.push({
+						'question' : currentQuestion,
+						'answer' : rightAnswer,
+						'userAnswer' : userAnswer
+					});
 					modalGenerator('Sorry, the answer is <span class=\'wrong\'>' + rightAnswer + '</span>', 'Continue');
 				}
 			}
@@ -443,18 +451,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			}
 			// if final question has already been asked
 			if (progressCounter == topicData[topicPosition]['questions'].length) {
-				console.log('Progress report: game over');
-				// content of score page
-				var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
-					+ '<br>Category: ' + chosenCategory
-					+ '<br><strong>Score</strong>: ' + score + ' out of ' + topicData[topicPosition]['questions'].length;
-
-				// lets other loops know the end game sequence is active.
-				// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
-				final = true;
-				timeEnd = new Date().getTime();
-				gatherStats(); // send session stats to localStorage
-				modalGenerator(scoreMessage, 'Continue'); // should I make a 3rd var for desitnation?
+				gameOverScreen();
 			}
 		} // end all category
 		// if specific category is chosen
@@ -472,20 +469,43 @@ document.addEventListener('DOMContentLoaded', function(){
 			}
 			// if final question has already been asked
 			if (progressCounter == topicDataFilteredCategory.length) {
-				console.log('Progress report: game over');
-				// content of score page
-				var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
-					+ '<br>Category: ' + chosenCategory
-					+ '<br><strong>Score</strong>: ' + score + ' out of ' + topicDataFilteredCategory.length;
-				// lets other loops know the end game sequence is active.
-				// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
-				final = true;
-				timeEnd = new Date().getTime();
-				gatherStats(); // send session stats to localStorage
-				modalGenerator(scoreMessage, 'Continue'); // should I make a 3rd var for desitnation?
+				gameOverScreen();
 			}
 		}
 
+	}
+
+	function gameOverScreen(){
+		console.log('Progress report: game over');
+		// content of score page
+		var scoreMessage = '<h2>Game Over</h2>' + 'Topic: ' + topicData[topicPosition]['name']
+			+ '<br>Category: ' + chosenCategory
+			+ '<br><strong>Score</strong>: ' + score + ' out of ' + topicData[topicPosition]['questions'].length;
+		console.log(wrongAnswers);
+		var results = '<div id=\'answerToggle\'>Show Wrong Answers</div><ul id=\'resultsList\'>';
+		for (var i = 0; i < wrongAnswers.length; i++) {
+			results += '<li><span>Question: </span>' + (wrongAnswers[i]['question']) + '</li>';
+			results += '<li><span>Your Answer: </span>' + (wrongAnswers[i]['userAnswer']) + '</li>';
+			results += '<li class=\'groupEnd\'><span>Correct Answer: </span>' + (wrongAnswers[i]['answer']) + '</li>';
+		}
+		results += '</ul>';
+
+		// lets other loops know the end game sequence is active.
+		// Note: If I do a smarter content div replacement I'll need to clear this var when user presses Okay
+		final = true;
+		timeEnd = new Date().getTime();
+		gatherStats(); // send session stats to localStorage
+		modalGenerator(scoreMessage+results, 'Continue'); // should I make a 3rd var for desitnation?
+
+		document.querySelector('#answerToggle').addEventListener('click', function(){
+			document.querySelector('#resultsList').classList.toggle('show');
+			if ( document.querySelector('#resultsList').classList.contains('show')){
+				document.querySelector('#answerToggle').innerHTML = 'Hide Wrong Answers';
+			} else {
+				document.querySelector('#answerToggle').innerHTML = 'Show Wrong Answers';
+			}
+
+		});
 	}
 
 	// update progress field contents
