@@ -496,6 +496,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		timeEnd = new Date().getTime();
 		gatherStats(); // send session stats to localStorage
 		modalGenerator(scoreMessage+results, 'Continue'); // should I make a 3rd var for desitnation?
+		document.querySelector('.messageBox .yes').focus(); // give main action button focus
 
 		document.querySelector('#answerToggle').addEventListener('click', function(){
 			document.querySelector('#resultsList').classList.toggle('show');
@@ -545,6 +546,17 @@ document.addEventListener('DOMContentLoaded', function(){
 		//progressCounter = 0;
 		//doAjax();
 	}
+
+	if (document.querySelector('.info')) {
+		document.querySelector('.info').addEventListener('click', function(){
+			//openModal() {}
+			//or...
+			//strings = ['first','second','third'];
+			var strings = '<h3>What is this?</h3><div class=\'left-align small\'\'><p>Typical Quiz is a study tool to help my stubborn brain remember stuff. Built from scratch in vanilla Javascript, it was also good code practice.</p><p>Source Code: <a href=\'https://github.com/gricha2380/typicalquiz\' class=\'match\'>https://github.com/gricha2380/typicalquiz</a></p></div>';
+			modalGenerator(strings,'Okay');
+		});
+	}
+
 
 	// nifty function to deliver standardized error messages
 	function errorGenerator(message) {

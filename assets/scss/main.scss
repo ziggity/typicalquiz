@@ -491,6 +491,34 @@ button {
     }
 }
 
+.info {
+	display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    color: #fff;
+    line-height: 1.5rem;
+    text-align: center;
+    background: rgba(91, 104, 123, 0.67);
+    margin-left: 1rem;
+    font-family: serif;
+    &:hover {
+		cursor: pointer;
+		background: rgba(91, 104, 123, 0.9);
+	}
+}
+
+.small {
+	font-size: 1rem;
+}
+.left-align {
+	text-align: left;
+}
+
+a.match {
+	color: white;
+}
+
 @media only screen and (max-width: 500px) {
 	.headLinks {
 		position: inherit;
@@ -503,6 +531,10 @@ button {
 		width: inherit;
 		padding: inherit;
 	}
+	.mainTitle {
+		line-height: 3.5rem;
+		font-size: 3rem;
+	}
 	.stats {
 		margin-top: 0;
 	    position: initial;
@@ -512,10 +544,13 @@ button {
 	.sectionHeader {
 		text-align: center;
 	}
-	.messageBox .inner {
-		left: calc(50% - 50vw);
-	    top: 20px;
-	    width: 100vw;
+	.messageBox {
+		//top: 0;
+		.inner {
+			left: calc(50% - 50vw);
+		    top: 20px;
+		    width: 100vw;
+		}
 	}
 	.questionCount {
 		display: block;
@@ -574,8 +609,12 @@ button {
 		background: $specialHiglight;
 		color: white;
 	}
+	button {
+		box-shadow: none;
+	}
 	.answer {
 		background: $specialHiglight;
+		margin-bottom: 4px;
 	}
 	.headerLinks {
 		position: initial;
