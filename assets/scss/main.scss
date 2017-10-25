@@ -107,6 +107,9 @@ h3,h2 {
 .lowerBox {
 	// background: $darkMain;
 	padding: $p1 0;
+	&:empty {
+		padding: 0;
+	}
 }
 
 button {
@@ -250,7 +253,7 @@ button {
 }
 
 .errorBox {
-	margin-top: 5px;
+	margin: 5px 0;
 	text-align: center;
 	color: #ad0606;
 }
@@ -618,5 +621,14 @@ a.match {
 	}
 	.headerLinks {
 		position: initial;
+	}
+}
+
+@media only screen and (min-height: 1000px) {
+	.upperHolder {
+		min-height: 20vh;
+	}
+	.lowerHolder {
+		height: 80vh;
 	}
 }
