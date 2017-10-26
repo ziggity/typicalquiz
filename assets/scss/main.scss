@@ -163,6 +163,9 @@ button {
     		color: white;
     		margin: 0;
 		}
+		&.skip, &.hint {
+			float: left;
+		}
 	}
 }
 
