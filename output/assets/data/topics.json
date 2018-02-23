@@ -124,25 +124,37 @@
 	]
 },
 {
-	"name":"Some other topic",
-	"description":"This quiz covers other things.",
+	"name":"Test Driven Development in JS",
+	"description":"Test driven methodology for building JavaScript applications",
 	"resources" : [{
-		"name" : "",
-		"description" : "",
-		"link" : ""
+		"name" : "Learning Journal",
+		"description" : "Personal list of learning resources",
+		"link" : "https://github.com/gricha2380/learning-journal/edit/master/README.md"
 	}],
 	"questions": [
 		{
-			"question":"First question that is not git",
-			"hint" :"this is a hint for q1 no git",
-			"answer" : "1",
-			"category" : "example category"
+			"question":"Type of test that confirm the functionality of an individual part of the codebase.",
+			"hint" :"The scope might be one function.",
+			"answer" : "unit test",
+			"category" : "Testing 101"
 		},
 		{
-			"question":"Second question",
-			"hint" :"this is a hint for q2 no git",
-			"answer" : "2",
-			"category" : "example category"
+			"question":"Type of test that ensures code works together as expected",
+			"hint" :"Useful for 3rd party contributions",
+			"answer" : "integration test",
+			"category" : "Testing 101"
+		},
+		{
+			"question":"Type of test that runs application from start to finish",
+			"hint" :"expensive and time consuming",
+			"answer" : "end to end test",
+			"category" : "Testing 101"
+		},
+		{
+			"question":"Pattern involving writing tests, fixing functions then improving them until ready to move on",
+			"hint" :"Write it, even if it fails at first",
+			"answer" : "red green refactor",
+			"category" : "Testing 101"
 		}
 
 	]

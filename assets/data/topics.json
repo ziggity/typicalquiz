@@ -139,15 +139,21 @@
 			"category" : "Testing 101"
 		},
 		{
-			"question":"Type of test that ensures code works together as expected.",
+			"question":"Type of test that ensures code works together as expected",
 			"hint" :"Useful for 3rd party contributions",
 			"answer" : "integration test",
 			"category" : "Testing 101"
 		},
 		{
-			"question":"Type of test that runs application from start to finish.",
+			"question":"Type of test that runs application from start to finish",
 			"hint" :"expensive and time consuming",
 			"answer" : "end to end test",
+			"category" : "Testing 101"
+		},
+		{
+			"question":"Pattern involving writing tests, fixing functions then improving them until ready to move on",
+			"hint" :"Write it, even if it fails at first",
+			"answer" : "red green refactor",
 			"category" : "Testing 101"
 		}
 
