@@ -283,5 +283,34 @@
 			"category" : "bash"
 		}
 	]
+},
+{
+	"name":"Terminal Command Line",
+	"description":"Basic command line functionality.",
+	"resources" : [{
+		"name" : "List of shortcuts",
+		"description" : "Some of the many available keyboard shortcuts in bash terminal",
+		"links" : ["https://content.pivotal.io/blog/terminal-beyond-ctrl-a-and-ctrl-e","https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/"]
+	}],
+	"questions": [
+		{
+			"question":"Delete entire line of text",
+			"hint" : "You know",
+			"answer" : "control u",
+			"category" : "bash 101"
+		},
+		{
+			"question":"Move to beginning of line",
+			"hint" : "First character.",
+			"answer" : "control a",
+			"category" : "bash 101"
+		},
+		{
+			"question":"Move to end of line",
+			"hint" : "End",
+			"answer" : "control e",
+			"category" : "bash 101"
+		}
+	]
 }
 ]
