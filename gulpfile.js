@@ -55,6 +55,7 @@ gulp.task("js",function(){
 	.pipe(map.init())
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
+	.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 	.pipe(map.write("/"))
 	.pipe(gulp.dest('output/assets/js'))
 	.pipe(browserSync.stream())

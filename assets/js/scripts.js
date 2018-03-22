@@ -1,7 +1,7 @@
-'use strict'; // no sloppy JS habits allowed here.
+//'use strict'; // no sloppy JS habits allowed here.
 // wait till page is fully loaded
 document.addEventListener('DOMContentLoaded', function(){
-	var topicData; // empty var to hold question JSON
+	var topicData; // empty let to hold question JSON
 	var topicDataRandom; // will hold the shuffled order
 	var topicDataBackup, backup2; // untampered copy of topicData order
 	var topicDataFilteredCategory = []; // holds questions from current category
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		'selectTopic' : 'Please select a topic.',
 		'pleaseAnswer' : 'At least try and answer the question, alright?',
 		'endQuiz' : 'Are you sure you want to end your quiz?'
-	}
+	} 
 	var gameSession; // initialize local array for holding goals
 	// if localStorage is found, load it into the variable
 	if (readLocalStorage('gameSession')) {
