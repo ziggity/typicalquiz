@@ -1,0 +1,269 @@
+[{
+	"name":"Learn Git",
+	"description":"This quiz covers basic commands found in Git system.",
+	"resources" : [{
+		"name" : "TryGit",
+		"description" : "Interactive intro to basic git concepts",
+		"links" : ["https://try.github.io/", "https://learngitbranching.js.org/"]
+	}],
+	"questions": [
+		{
+			"question":"Command used to initialize new git repository.",
+			"hint" : "No hint needed. You've got this.",
+			"answer" : "git init",
+			"category" : "git 101"
+		},
+		{
+			"question":"Copies an existing Git repository.",
+			"hint" : "No hint needed. You've got this.",
+			"answer" : "git clone",
+			"category" : "git 101"
+		},
+		{
+			"question":"View current state of the current project.",
+			"hint" :"Shows files in all the various states of the work flow",
+			"answer" : "git status",
+			"category" : "git 101"
+		},
+		{
+			"question":"Setup the basic git user parameters on an individual or global level",
+			"hint" : "No hint needed. You've got this.",
+			"answer" : "git config",
+			"category" : "git 101"
+		},
+		{
+			"question":"How would you tell git to add all PNG files in the root directory?",
+			"hint" : "Please use single quotes",
+			"answer" : "git add '*.png'",
+			"category" : "git 101"
+		},
+		{
+			"question":"Used to compare changes between remote files and local",
+			"hint" : "Handy file comparison",
+			"answer" : "git diff",
+			"category" : "git 101"
+		},
+		{
+			"question":"Define the author email address to be used in all commits for current repo",
+			"hint" : "There's a global version also",
+			"answer" : "git config user.email",
+			"category" : "git 101"
+		},
+		{
+			"question":"Show a list of commit history",
+			"hint" : "The captain has one of these also",
+			"answer" : "git log",
+			"category" : "git 101"
+		},
+		{
+			"question":"Add remote repository named origin",
+			"hint" : "remote is the key",
+			"answer" : "git remote add origin",
+			"category" : "git 101"
+		},
+		{
+			"question":"Push code from local master branch to remote named origin and save parameters",
+			"hint" : "push to then from",
+			"answer" : "git push -u origin master",
+			"category" : "git 101"
+		},
+		{
+			"question":"Pull from remote named origin into local master branch",
+			"hint" : "pull command, not remote. from then to",
+			"answer" : "git pull origin master",
+			"category" : "git 101"
+		},
+		{
+			"question":"Checkout and create a branch",
+			"hint" : "No hint needed. You've got this.",
+			"answer" : "git checkout -b",
+			"category" : "git 201"
+		},
+		{
+			"question":"Compare differences in staged environment",
+			"hint" : "double",
+			"answer" : "git diff --staged",
+			"category" : "git 101"
+		},
+		{
+			"question":"Unstage a file",
+			"hint" : "Just removes from staging, not undo. __ the stage.",
+			"answer" : "git reset",
+			"category" : "git 101"
+		},
+		{
+			"question":"Undo a file called me.txt to the state of the last commit",
+			"hint" : "two dashes and blank space",
+			"answer" : "git checkout -- me.txt",
+			"category" : "git 101"
+		},
+		{
+			"question":"Create a branch named tom without checking out",
+			"hint" : "No hint needed. You've got this.",
+			"answer" : "git branch tom",
+			"category" : "git 101"
+		},
+		{
+			"question":"Delete a file called me.txt from root directory",
+			"hint" : "Remove from git and delete",
+			"answer" : "git rm me.txt",
+			"category" : "git 101"
+		},
+		{
+			"question":"You're on gh-pages branch. What's the 4 step process to merge changes into master?",
+			"hint" : "CPMP",
+			"answer" : "checkout pull merge push",
+			"category" : "git 101"
+		},
+		{
+			"question":"Delete a branch called old",
+			"hint" : "No hint needed. You've got this.",
+			"answer" : "git branch -d old",
+			"category" : "git 101"
+		}
+	]
+},
+{
+	"name":"Some other topic",
+	"description":"This quiz covers other things.",
+	"resources" : [{
+		"name" : "",
+		"description" : "",
+		"link" : ""
+	}],
+	"questions": [
+		{
+			"question":"First question that is not git",
+			"hint" :"this is a hint for q1 no git",
+			"answer" : "1",
+			"category" : "example category"
+		},
+		{
+			"question":"Second question",
+			"hint" :"this is a hint for q2 no git",
+			"answer" : "2",
+			"category" : "example category"
+		}
+
+	]
+},
+{
+	"name":"Code Fellows 201 Topics",
+	"description":"Overview of things I should know to skip 201 level",
+	"resources" : [{
+		"name" : "301 Prework",
+		"description" : "Things to know and do before starting 301",
+		"link" : "https://github.com/codefellows/code-301-prework"
+	}],
+	"questions": [
+		{
+			"question":"Attach a 4 second keyframe animation for an animation named fancyfade",
+			"hint" : "Write property, value, time, endline",
+			"answer" : "animation: fancyfade 4s;",
+			"category" : "css"
+		},
+		{
+			"question":"Create a 4 second transition for padding",
+			"hint" : "Write property, value, time, endline",
+			"answer" : "transition: padding 4s;",
+			"category" : "css"
+		},
+		{
+			"question":"Please fill in the blank ___ only screen and (min-width: 35em){}",
+			"hint" : "Write property",
+			"answer" : "@media",
+			"category" : "css"
+		},
+		{
+			"question":"Name the 5 datatypes in Javascript. Write without commas.",
+			"hint" : "bunns",
+			"answer" : "boolean undefined number null string",
+			"category" : "javascript"
+		},
+		{
+			"question":"A property containing a function definition is a description of what?",
+			"hint" : "Can change object property values and can make calculations based on specified properties",
+			"answer" : "method",
+			"category" : "javascript"
+		},
+		{
+			"question":"Fill in the blanks for an AJAX success condition (this.readyState == __ && this.status == ___ ){}",
+			"hint" : "no commas required",
+			"answer" : "4 200",
+			"category" : "javascript"
+		},
+		{
+			"question":"Basic command for localStorage",
+			"hint" : "no values or method parenthesis needed",
+			"answer" : "window.localStorage",
+			"category" : "javascript"
+		},
+		{
+			"question":"Method to place an item into localStorage. window.localStorage._____",
+			"hint" : "no values or method parenthesis needed",
+			"answer" : "setItem",
+			"category" : "javascript"
+		},
+		{
+			"question":"Method to retrieve an item from localStorage. window.localStorage._____",
+			"hint" : "no values or method parenthesis needed",
+			"answer" : "getItem",
+			"category" : "javascript"
+		},
+		{
+			"question":"In MVC pattern, this defines the data structure",
+			"hint" : "MVC",
+			"answer" : "model",
+			"category" : "javascript"
+		},
+		{
+			"question":"In MVC pattern, this defines display",
+			"hint" : "MVC",
+			"answer" : "view",
+			"category" : "javascript"
+		},
+		{
+			"question":"In MVC pattern, this updates the app in response to user input",
+			"hint" : "MVC",
+			"answer" : "controller",
+			"category" : "javascript"
+		},
+		{
+			"question":"Delete a file. There's no undo, be careful.",
+			"hint" : "variations include __ -rf",
+			"answer" : "rm",
+			"category" : "bash"
+		},
+		{
+			"question":"Copy a file and move it to a new directory",
+			"hint" : "Takes two arguments: the file being copied and the destination. ___ myFile ~/Sites",
+			"answer" : "cp",
+			"category" : "bash"
+		},
+		{
+			"question":"Make a folder",
+			"hint" : "Does what it says",
+			"answer" : "mkdir",
+			"category" : "bash"
+		},
+		{
+			"question":"Show the path to the path to the current directory",
+			"hint" : "Present Working Directory",
+			"answer" : "pwd",
+			"category" : "bash"
+		},
+		{
+			"question":"Create a new file inside the current directory",
+			"hint" : "____ newFile.txt",
+			"answer" : "touch",
+			"category" : "bash"
+		},
+		{
+			"question":"Move files from one place to another",
+			"hint" : "_____ myFile.txt ~/Sites/folder",
+			"answer" : "mv",
+			"category" : "bash"
+		}
+	]
+}
+]
