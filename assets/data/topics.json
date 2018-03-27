@@ -1,269 +1,780 @@
 [{
-	"name":"Learn Git",
-	"description":"This quiz covers basic commands found in Git system.",
-	"resources" : [{
-		"name" : "TryGit",
-		"description" : "Interactive intro to basic git concepts",
-		"links" : ["https://try.github.io/", "https://learngitbranching.js.org/"]
-	}],
-	"questions": [
-		{
-			"question":"Command used to initialize new git repository.",
-			"hint" : "No hint needed. You've got this.",
-			"answer" : "git init",
-			"category" : "git 101"
-		},
-		{
-			"question":"Copies an existing Git repository.",
-			"hint" : "No hint needed. You've got this.",
-			"answer" : "git clone",
-			"category" : "git 101"
-		},
-		{
-			"question":"View current state of the current project.",
-			"hint" :"Shows files in all the various states of the work flow",
-			"answer" : "git status",
-			"category" : "git 101"
-		},
-		{
-			"question":"Setup the basic git user parameters on an individual or global level",
-			"hint" : "No hint needed. You've got this.",
-			"answer" : "git config",
-			"category" : "git 101"
-		},
-		{
-			"question":"How would you tell git to add all PNG files in the root directory?",
-			"hint" : "Please use single quotes",
-			"answer" : "git add '*.png'",
-			"category" : "git 101"
-		},
-		{
-			"question":"Used to compare changes between remote files and local",
-			"hint" : "Handy file comparison",
-			"answer" : "git diff",
-			"category" : "git 101"
-		},
-		{
-			"question":"Define the author email address to be used in all commits for current repo",
-			"hint" : "There's a global version also",
-			"answer" : "git config user.email",
-			"category" : "git 101"
-		},
-		{
-			"question":"Show a list of commit history",
-			"hint" : "The captain has one of these also",
-			"answer" : "git log",
-			"category" : "git 101"
-		},
-		{
-			"question":"Add remote repository named origin",
-			"hint" : "remote is the key",
-			"answer" : "git remote add origin",
-			"category" : "git 101"
-		},
-		{
-			"question":"Push code from local master branch to remote named origin and save parameters",
-			"hint" : "push to then from",
-			"answer" : "git push -u origin master",
-			"category" : "git 101"
-		},
-		{
-			"question":"Pull from remote named origin into local master branch",
-			"hint" : "pull command, not remote. from then to",
-			"answer" : "git pull origin master",
-			"category" : "git 101"
-		},
-		{
-			"question":"Checkout and create a branch",
-			"hint" : "No hint needed. You've got this.",
-			"answer" : "git checkout -b",
-			"category" : "git 201"
-		},
-		{
-			"question":"Compare differences in staged environment",
-			"hint" : "double",
-			"answer" : "git diff --staged",
-			"category" : "git 101"
-		},
-		{
-			"question":"Unstage a file",
-			"hint" : "Just removes from staging, not undo. __ the stage.",
-			"answer" : "git reset",
-			"category" : "git 101"
-		},
-		{
-			"question":"Undo a file called me.txt to the state of the last commit",
-			"hint" : "two dashes and blank space",
-			"answer" : "git checkout -- me.txt",
-			"category" : "git 101"
-		},
-		{
-			"question":"Create a branch named tom without checking out",
-			"hint" : "No hint needed. You've got this.",
-			"answer" : "git branch tom",
-			"category" : "git 101"
-		},
-		{
-			"question":"Delete a file called me.txt from root directory",
-			"hint" : "Remove from git and delete",
-			"answer" : "git rm me.txt",
-			"category" : "git 101"
-		},
-		{
-			"question":"You're on gh-pages branch. What's the 4 step process to merge changes into master?",
-			"hint" : "CPMP",
-			"answer" : "checkout pull merge push",
-			"category" : "git 101"
-		},
-		{
-			"question":"Delete a branch called old",
-			"hint" : "No hint needed. You've got this.",
-			"answer" : "git branch -d old",
-			"category" : "git 101"
-		}
-	]
-},
-{
-	"name":"Some other topic",
-	"description":"This quiz covers other things.",
+	"name":"Airport Codes",
+	"description":"This quiz covers Airport Codes.",
 	"resources" : [{
 		"name" : "",
 		"description" : "",
 		"link" : ""
 	}],
 	"questions": [
-		{
-			"question":"First question that is not git",
-			"hint" :"this is a hint for q1 no git",
-			"answer" : "1",
-			"category" : "example category"
-		},
-		{
-			"question":"Second question",
-			"hint" :"this is a hint for q2 no git",
-			"answer" : "2",
-			"category" : "example category"
-		}
+        {
+            "question": "ABQ",
+            "answer": "Albuquerque",
+            "hint": "near mexico",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ACV",
+            "answer": "Eureka",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ADK",
+            "answer": "Adak Island",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ADQ",
+            "answer": "Kodiak",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "AKN",
+            "answer": "King Salmon",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ALW",
+            "answer": "Walla Walla",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ANC",
+            "answer": "Anchorage",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ATL",
+            "answer": "Atlanta",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "AUS",
+            "answer": "Austin",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BET",
+            "answer": "Bethel",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BIL",
+            "answer": "Billings",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BLI",
+            "answer": "Bellingham",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BNA",
+            "answer": "Nashville",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BOI",
+            "answer": "Boise",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BOS",
+            "answer": "Boston",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BRW",
+            "answer": "Barrow",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BUR",
+            "answer": "Burbank",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BWI",
+            "answer": "Baltimore",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "BZN",
+            "answer": "Bozeman",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "CDV",
+            "answer": "Cordova",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "CHS",
+            "answer": "Charleston",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "COS",
+            "answer": "Colorado Springs",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "CUN",
+            "answer": "Cancun",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "DCA",
+            "answer": "Washington - Reagan",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "DEN",
+            "answer": "Denver",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "DFW",
+            "answer": "Dallas",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "DIL",
+            "answer": "Dillingham",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "DTW",
+            "answer": "Detroit",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "DUT",
+            "answer": "Dutch Harbor",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "EAT",
+            "answer": "Wenatchee",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "EUG",
+            "answer": "Eugene",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "EWR",
+            "answer": "New York - Newark",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "FAI",
+            "answer": "Fairbanks",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "FAT",
+            "answer": "Fresno",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "FCA",
+            "answer": "Kalispell",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "FLG",
+            "answer": "Flagstaff",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "FLL",
+            "answer": "Ft Lauderdale",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "GDL",
+            "answer": "Guadalajara",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "GEG",
+            "answer": "Spokane",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "GST",
+            "answer": "Glacier Bay",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "GST",
+            "answer": "Gustavus",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "GTF",
+            "answer": "Great Falls",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "GUC",
+            "answer": "Gunnison County / Crested Butte",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "HDN",
+            "answer": "Steamboat Springs",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "HLN",
+            "answer": "Helena",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "HNL",
+            "answer": "Honolulu",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "IAD",
+            "answer": "Washington - Dulles",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "IAH",
+            "answer": "Houston",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "IDA",
+            "answer": "Idaho Falls",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "JFK",
+            "answer": "New York - JFK",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "JNU",
+            "answer": "Juneau",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "KOA",
+            "answer": "Kona",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "KTN",
+            "answer": "Ketchikan",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LAP",
+            "answer": "La Paz",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LAS",
+            "answer": "Las Vegas",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LAX",
+            "answer": "Los Angeles",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LGB",
+            "answer": "Long Beach",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LIH",
+            "answer": "Kauai",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LIR",
+            "answer": "Liberia, Costa Rica",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LTO",
+            "answer": "Loreto",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LWS",
+            "answer": "Lewiston",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MCI",
+            "answer": "Kansas City",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MCO",
+            "answer": "Orlando",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MEX",
+            "answer": "Mexico City",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MFR",
+            "answer": "Medford",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MIA",
+            "answer": "Miami",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MMH",
+            "answer": "Mammoth Lakes",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MRY",
+            "answer": "Monterey",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MSO",
+            "answer": "Missoula",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MSP",
+            "answer": "Minneapolis",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MSY",
+            "answer": "New Orleans",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MZT",
+            "answer": "Mazatlan",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "OAK",
+            "answer": "Oakland",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "OGG",
+            "answer": "Maui",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "OKC",
+            "answer": "Oklahoma City",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "OMA",
+            "answer": "Omaha",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "OME",
+            "answer": "Nome",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ONT",
+            "answer": "Ontario",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ORD",
+            "answer": "Chicago",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "OTZ",
+            "answer": "Kotzebue",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PDX",
+            "answer": "Portland",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PHL",
+            "answer": "Philadelphia",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PHX",
+            "answer": "Phoenix",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PRC",
+            "answer": "Prescott",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PSC",
+            "answer": "Pasco",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PSG",
+            "answer": "Petersburg",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PSP",
+            "answer": "Palm Springs",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PUW",
+            "answer": "Pullman",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "PVR",
+            "answer": "Puerto Vallarta",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "RDD",
+            "answer": "Redding",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "RDM",
+            "answer": "Redmond",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "RDU",
+            "answer": "Raleigh-Durham",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "RNO",
+            "answer": "Reno",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SAN",
+            "answer": "San Diego",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SAT",
+            "answer": "San Antonio",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SBA",
+            "answer": "Santa Barbara",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SCC",
+            "answer": "Prudhoe Bay",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SEA",
+            "answer": "Seattle",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SFO",
+            "answer": "San Francisco",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SIT",
+            "answer": "Sitka",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SJC",
+            "answer": "San Jose",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SJD",
+            "answer": "Los Cabos",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SJO",
+            "answer": "San Jose, Costa Rica",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SLC",
+            "answer": "Salt Lake City",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SMF",
+            "answer": "Sacramento",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SNA",
+            "answer": "Orange County",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "STL",
+            "answer": "St Louis",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "STS",
+            "answer": "Santa Rosa",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SUN",
+            "answer": "Sun Valley",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "TPA",
+            "answer": "Tampa",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "TUS",
+            "answer": "Tucson",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "WRG",
+            "answer": "Wrangell",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "YAK",
+            "answer": "Yakutat",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "YEG",
+            "answer": "Edmonton",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "YKM",
+            "answer": "Yakima",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "YLW",
+            "answer": "Kelowna",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "YVR",
+            "answer": "Vancouver",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "YYC",
+            "answer": "Calgary",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "YYJ",
+            "answer": "Victoria",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ZIH",
+            "answer": "Ixtapa",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ZLO",
+            "answer": "Manzanillo",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "MIL",
+            "answer": "Milwaukee",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "HAV",
+            "answer": "Havana",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "ICT",
+            "answer": "Wichita",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "IND",
+            "answer": "Indianapolis",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "SBP",
+            "answer": "San Luis Obispo",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "DAL",
+            "answer": "Dallas - Love Field",
+            "hint": "",
+            "category": "Airport Codes"
+          },
+          {
+            "question": "LGA",
+            "answer": "New York - LaGuardia",
+            "hint": "",
+            "category": "Airport Codes"
+          }
 
 	]
-},
-{
-	"name":"Code Fellows 201 Topics",
-	"description":"Overview of things I should know to skip 201 level",
-	"resources" : [{
-		"name" : "301 Prework",
-		"description" : "Things to know and do before starting 301",
-		"link" : "https://github.com/codefellows/code-301-prework"
-	}],
-	"questions": [
-		{
-			"question":"Attach a 4 second keyframe animation for an animation named fancyfade",
-			"hint" : "Write property, value, time, endline",
-			"answer" : "animation: fancyfade 4s;",
-			"category" : "css"
-		},
-		{
-			"question":"Create a 4 second transition for padding",
-			"hint" : "Write property, value, time, endline",
-			"answer" : "transition: padding 4s;",
-			"category" : "css"
-		},
-		{
-			"question":"Please fill in the blank ___ only screen and (min-width: 35em){}",
-			"hint" : "Write property",
-			"answer" : "@media",
-			"category" : "css"
-		},
-		{
-			"question":"Name the 5 datatypes in Javascript. Write without commas.",
-			"hint" : "bunns",
-			"answer" : "boolean undefined number null string",
-			"category" : "javascript"
-		},
-		{
-			"question":"A property containing a function definition is a description of what?",
-			"hint" : "Can change object property values and can make calculations based on specified properties",
-			"answer" : "method",
-			"category" : "javascript"
-		},
-		{
-			"question":"Fill in the blanks for an AJAX success condition (this.readyState == __ && this.status == ___ ){}",
-			"hint" : "no commas required",
-			"answer" : "4 200",
-			"category" : "javascript"
-		},
-		{
-			"question":"Basic command for localStorage",
-			"hint" : "no values or method parenthesis needed",
-			"answer" : "window.localStorage",
-			"category" : "javascript"
-		},
-		{
-			"question":"Method to place an item into localStorage. window.localStorage._____",
-			"hint" : "no values or method parenthesis needed",
-			"answer" : "setItem",
-			"category" : "javascript"
-		},
-		{
-			"question":"Method to retrieve an item from localStorage. window.localStorage._____",
-			"hint" : "no values or method parenthesis needed",
-			"answer" : "getItem",
-			"category" : "javascript"
-		},
-		{
-			"question":"In MVC pattern, this defines the data structure",
-			"hint" : "MVC",
-			"answer" : "model",
-			"category" : "javascript"
-		},
-		{
-			"question":"In MVC pattern, this defines display",
-			"hint" : "MVC",
-			"answer" : "view",
-			"category" : "javascript"
-		},
-		{
-			"question":"In MVC pattern, this updates the app in response to user input",
-			"hint" : "MVC",
-			"answer" : "controller",
-			"category" : "javascript"
-		},
-		{
-			"question":"Delete a file. There's no undo, be careful.",
-			"hint" : "variations include __ -rf",
-			"answer" : "rm",
-			"category" : "bash"
-		},
-		{
-			"question":"Copy a file and move it to a new directory",
-			"hint" : "Takes two arguments: the file being copied and the destination. ___ myFile ~/Sites",
-			"answer" : "cp",
-			"category" : "bash"
-		},
-		{
-			"question":"Make a folder",
-			"hint" : "Does what it says",
-			"answer" : "mkdir",
-			"category" : "bash"
-		},
-		{
-			"question":"Show the path to the path to the current directory",
-			"hint" : "Present Working Directory",
-			"answer" : "pwd",
-			"category" : "bash"
-		},
-		{
-			"question":"Create a new file inside the current directory",
-			"hint" : "____ newFile.txt",
-			"answer" : "touch",
-			"category" : "bash"
-		},
-		{
-			"question":"Move files from one place to another",
-			"hint" : "_____ myFile.txt ~/Sites/folder",
-			"answer" : "mv",
-			"category" : "bash"
-		}
-	]
-}
-]
+}]
