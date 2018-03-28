@@ -258,9 +258,9 @@ button {
 .messageBox {
 	top: 20%;
 	z-index: 2;
-    position: fixed;
+    position: absolute;
     left: 50%;
-    //transform: translate(-50%, -50%);
+   	transform: translate(-50%, -50%);
     .row.full {
     	position: absolute;
     	bottom: 0;
@@ -372,8 +372,8 @@ button {
     background: #5b687b;
     padding: 10px 20px 0;
     position: absolute;
-    right: 15rem;
-    margin-top: -6rem;
+    right: 20rem;
+    margin-top: -2rem;
     .sectionHeader {
     	margin-bottom: 1rem;
     }

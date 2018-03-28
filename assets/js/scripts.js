@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', function(){
 		} else {
 			// document.querySelector('.randomStatus').innerText = 'Random Off'; // start with random off
 			// document.querySelector('.randomHolder').classList.remove('active');
-			// randomToggle();
-			randomOff();
+			 randomToggle();
+			//randomOff();
 		}
 		document.querySelector('.randomHolder').classList.remove('hide'); // make random toggle visible
 	}
@@ -118,6 +118,11 @@ document.addEventListener('DOMContentLoaded', function(){
 	// set topic name on active quiz page
 	function setTopicHeader() {
 		document.querySelector('.topic').innerText = topicData[topicPosition]['name'];
+		
+	}
+	function setImg(){
+		document.getElementById("img").src = topicData[topicPosition]['questions'][progressCounter]['img'];
+		console.log(topicData[topicPosition]['questions'][progressCounter]['img']);
 	}
 
 	// set topic name on active quiz page
@@ -204,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	function setCategory(selection, count) {
 		chosenCategory = selection; // set global category to user's selection
 		document.querySelector("#categoryMenu").innerText = selection;
-		document.querySelector("#categoryMenu + .dropdownList").classList.toggle("show");
+		//document.querySelector("#categoryMenu + .dropdownList").classList.toggle("show");
 		console.log("you clicked " + selection);
 		// document.querySelector('.questionCount').innerHTML = topicDataFilteredCategory[progressCounter].length + ' Questions'; // total number of questions
 		// attach opening and closing tag to each topic captured from JSON
@@ -230,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		// start quiz when button is pressed
 		document.querySelector('.start').addEventListener('click', function() {
 			// console.log(document.querySelector('#topicMenu').innerText);
+			
 			var topicVar = document.querySelector('#topicMenu').innerText; // DOM selection for chosen topic
 			// Input validation for topic
 			if (topicVar == 'Choose One') {
@@ -309,7 +315,8 @@ document.addEventListener('DOMContentLoaded', function(){
 	    		// How do I do this more intelligently?
 
 	    		setTopicHeader(); // set topic name
-	    		setCategoryHeader(); // set category name
+				setCategoryHeader(); // set category name
+				setImg();
 
 				// if no category is chosen, proceed in with simple question asking
 				if (chosenCategory == 'All') {
@@ -382,6 +389,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// validate user answer
 	function checkAnswer(){
+		
 		var userAnswer = document.querySelector('#answerRow textarea').value;
 		var currentQuestion;
 		// if no category is specified
@@ -404,6 +412,9 @@ document.addEventListener('DOMContentLoaded', function(){
 				if (userAnswer.toLowerCase().trim() == rightAnswer.toLowerCase()) {
 					// display right answer in modal
 					modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
+					document.getElementById("img").src = ""
+					progressCounter++;
+					//setImg();
 					score++; // increase score if correct
 				} else {
 					wrongAnswers.push({
@@ -663,6 +674,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			'outOf' : numberOfQuestions,
 			'duration' : [timeStart, timeEnd, millisToMinutesAndSeconds(Math.abs(timeStart - timeEnd))],
 			'topic' : topicData[topicPosition]['name'],
+			'topicImg' : topicData[topicPosition]['questions'][progressCounter]['img'],
 			'category' : chosenCategory
 		});
 		// send array to localStorage function
