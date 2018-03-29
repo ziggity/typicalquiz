@@ -409,6 +409,12 @@ button {
 	}
 
 }
+.questionHolder{
+	font-size: 35px;
+}
+#yourAnswer{
+	font-size: 35px;
+}
 
 .header {
 	width: 56rem;
@@ -419,14 +425,27 @@ button {
     max-width: 40rem;
     margin: auto;
 }
+@mixin rounded($radius: 0.5em) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+  }
+#jumbotronStyle  {
+	@include rounded;
+  }
+  .skip .hint .answer{
+	  font-size: 35px;
+  }
 #questionScreenContainer {
-	position: absolute;
-    left: calc(50% - 19rem);
+	position: relative;
+	margin-left: auto ;
+	margin-right: auto ;
+    left: calc(50% - 25rem);
     background: white;
     color: $darkMain;
     padding: 0;
-    margin: 10rem 0 0;
-    width: 39rem;
+    margin: 5rem 0 0;
+    width: 45rem;
     max-width: none;
     z-index: 1;
     .topBox, .lowerBox {
