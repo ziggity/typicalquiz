@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	function setCategory(selection, count) {
 		chosenCategory = selection; // set global category to user's selection
 		document.querySelector("#categoryMenu").innerText = selection;
-		//document.querySelector("#categoryMenu + .dropdownList").classList.toggle("show");
+		document.querySelector("#categoryMenu + .dropdownList").classList.toggle("show");
 		console.log("you clicked " + selection);
 		// document.querySelector('.questionCount').innerHTML = topicDataFilteredCategory[progressCounter].length + ' Questions'; // total number of questions
 		// attach opening and closing tag to each topic captured from JSON
