@@ -19,63 +19,63 @@
             "answer": "Adak Island",
             "hint": "It is the westernmost municipality",
             "category": "Airport Codes",
-            "img": "../images/adak.jpg"
+            "img": "../assets/images/adak.jpg"
           },
           {
             "question": "ADQ",
             "answer": "Kodiak",
             "hint": "Alaska's largest fishing port, and Russian explorer Stephan Glotov discovered the island in 1763, calling it Kad’yak",
             "category": "Airport Codes",
-            "img": "../images/kodiak.jpg"
+            "img": "../assets/images/kodiak.jpg"
           },
           {
             "question": "AKN",
             "answer": "King Salmon",
             "hint": "Katmai National Park",
             "category": "Airport Codes",
-            "img": "../images/kingsalmon.jpg"
+            "img": "../assets/images/kingsalmon.jpg"
           },
           {
             "question": "ANC",
             "answer": "Anchorage",
             "hint": "largest city in US by square miles (1,961)",
             "category": "Airport Codes",
-            "img": "../images/anchorage.jpg"
+            "img": "../assets/images/anchorage.jpg"
           },
           {
             "question": "ATL",
             "answer": "Atlanta",
             "hint": "Hartsfield-Jackson International Airport is the busiest in the world",
             "category": "Airport Codes",
-            "img": "../images/atlanta.jpg"
+            "img": "../assets/images/atlanta.jpg"
           },
           {
             "question": "AUS",
             "answer": "Austin",
             "hint": "Airport Opened in May 23, 1999, and the city was originally named Waterlo",
             "category": "Airport Codes", 
-            "img": "../images/atlanta.jpg"
+            "img": "../assets/images/atlanta.jpg"
           },
           {
             "question": "BET",
             "answer": "Bethel",
             "hint": "City sits in the heart of the second largest national wildlife refuge in the United States",
             "category": "Airport Codes",
-            "img": "../images/bethel.jpg"
+            "img": "../assets/images/bethel.jpg"
           },
           {
             "question": "BLI",
             "answer": "Bellingham",
             "hint": "This city boasts more drive-thru espresso stands per capita than any other city in the U.S.-a whopping 50 stand",
             "category": "Airport Codes",
-            "img": "../images/bellingham.jpg"
+            "img": "../assets/images/bellingham.jpg"
           },
           {
             "question": "BNA",
             "answer": "Nashville",
             "hint": "The city was founded on Christmas Eve 1779.",
             "category": "Airport Codes",
-            "img": "../images/nashville.jpg"
+            "img": "../assets/images/nashville.jpg"
             
           },
           {
@@ -83,35 +83,35 @@
             "answer": "Boise",
             "hint": "Nickname: City of Trees. Elevation: 2,730 feet above sea level.",
             "category": "Airport Codes",
-            "img": "../images/boise.jpg"
+            "img": "../assets/images/boise.jpg"
           },
           {
             "question": "BOS",
             "answer": "Boston",
             "hint": "The first U.S. subway was built here",
             "category": "Airport Codes",
-            "img": "../images/boston.jpg"
+            "img": "../assets/images/boston.jpg"
           },
           {
             "question": "BRW",
             "answer": "Barrow",
             "hint": "It is 320 miles north of the Arctic Circle.",
             "category": "Airport Codes",
-            "img": "../images/barrow.jpg"
+            "img": "../assets/images/barrow.jpg"
           },
           {
             "question": "BUR",
             "answer": "Burbank",
             "hint": "Founded May 1, 1887",
             "category": "Airport Codes",
-            "img": "../images/burbank.jpg"
+            "img": "../assets/images/burbank.jpg"
           },
           {
             "question": "BWI",
             "answer": "Baltimore",
             "hint": "The first post office system in the United States was inaugurated in _ in 1774",
             "category": "Airport Codes",
-            "img": "../images/baltimore.jpg"
+            "img": "../assets/images/baltimore.jpg"
 
           },
           {
@@ -119,714 +119,714 @@
             "answer": "Bozeman",
             "hint": "it was gold that brought pioneers to _",
             "category": "Airport Codes",
-            "img": "../images/bozeman.jpg"
+            "img": "../assets/images/bozeman.jpg"
           },
           {
             "question": "CDV",
             "answer": "Cordova",
             "hint": "The Bonanza-Kennecott Mines operated until 1938 and yielded over $200 million in copper, silver, and gold. Fishing became the economic base in the early 1940s.",
             "category": "Airport Codes",
-            "img": "../images/cordova.jpg"
+            "img": "../assets/images/cordova.jpg"
           },
           {
             "question": "CUN",
             "answer": "Cancun",
             "hint": "The Great Mayan Barrier Reef in _ is the second largest coral reef in the world after Australia's Great Barrier Ree",
             "category": "Airport Codes",
-            "img": "../images/cancun.jpg"
+            "img": "../assets/images/cancun.jpg"
           },
           {
             "question": "DCA",
             "answer": "Washington - Reagan",
             "hint": "Two American Presidents kept alligators at the White House",
             "category": "Airport Codes",
-            "img": "../images/reagan.jpg"
+            "img": "../assets/images/reagan.jpg"
           },
           {
             "question": "DEN",
             "answer": "Denver",
             "hint": "Mile high city",
             "category": "Airport Codes",
-            "img": "../images/denver.jpg"
+            "img": "../assets/images/denver.jpg"
           },
           {
             "question": "DFW",
             "answer": "Dallas",
             "hint": "The integrated circuit computer chip (which became the microchip) was invented in _ in 1958",
             "category": "Airport Codes",
-            "img": "../images/dallas.jpg"
+            "img": "../assets/images/dallas.jpg"
           },
           {
             "question": "DIL",
             "answer": "Dillingham",
             "hint": "Only way to reach _ is by plane or sea",
             "category": "Airport Codes",
-            "img": "../images/dillingham.jpg"
+            "img": "../assets/images/dillingham.jpg"
           },
           {
             "question": "DTW",
             "answer": "Detroit",
             "hint": "_ is the oldest city west of the original thirteen colonies on this side of the Mississippi",
             "category": "Airport Codes",
-            "img": "../images/detroit.jpg"
+            "img": "../assets/images/detroit.jpg"
           },
           {
             "question": "EUG",
             "answer": "Eugene",
             "hint": "The University of this city _, founded in 1876, is one of the oldest universities on the West Coast…",
             "category": "Airport Codes",
-            "img": "../images/eugene.jpg"
+            "img": "../assets/images/eugene.jpg"
           },
           {
             "question": "EWR",
             "answer": "New York - Newark",
             "hint": "_, established in 1666, is the nation's third-oldest city",
             "category": "Airport Codes",
-            "img": "../images/newark.jpg"
+            "img": "../assets/images/newark.jpg"
           },
           {
             "question": "FAI",
             "answer": "Fairbanks",
             "hint": "120 miles south of the Arctic Circle",
             "category": "Airport Codes",
-            "img": "../images/fairbanks.jpg"
+            "img": "../assets/images/fairbanks.jpg"
           },
           {
             "question": "FCA",
             "answer": "Kalispell",
             "hint": "The name _ is a Salish word meaning flat land above the lake",
             "category": "Airport Codes",
-            "img": "../images/kalispell.jpg"
+            "img": "../assets/images/kalispell.jpg"
           },
           {
             "question": "FLG",
             "answer": "Flagstaff",
             "hint": "_ is located in the world's largest contiguous ponderosa pine forest. Walnut Canyon was originally home to the Sinagua Indians, who lived in the area in the 1200s before volcanic eruptions drove them out",
             "category": "Airport Codes",
-            "img": "../images/flagstaff.jpg"
+            "img": "../assets/images/flagstaff.jpg"
           },
           {
             "question": "FLL",
             "answer": "Ft Lauderdale",
             "hint": "The city can be considered the western corner of the Bermuda Triangle",
             "category": "Airport Codes",
-            "img": "../images/lauderdale.jpg"
+            "img": "../assets/images/lauderdale.jpg"
           },
           {
             "question": "GDL",
             "answer": "Guadalajara",
             "hint": "Founded in 1531, it has some fine Spanish colonial architecture, such as the cathedral and governor's palace",
             "category": "Airport Codes",
-            "img": "../images/Guadalajara.jpg"
+            "img": "../assets/images/Guadalajara.jpg"
           },
           {
             "question": "GEG",
             "answer": "Spokane",
             "hint": "Founded in 1872 as _ Falls. Hosted the 1974 World's Fair. Created Bloomsday, the largest timed running race in the nation.",
             "category": "Airport Codes",
-            "img": "../images/spokane.jpg"
+            "img": "../assets/images/spokane.jpg"
           },
           {
             "question": "GST",
             "answer": "Gustavus",
             "hint": "The population was 429 at the 2000 census and 442 as of the 2010 census",
             "category": "Airport Codes",
-            "img": "../images/gustavus.jpg"
+            "img": "../assets/images/gustavus.jpg"
           },
           {
             "question": "GTF",
             "answer": "Great Falls",
             "hint": "_ is home to the Worlds Shortest River - The Roe River - only 201 feet.",
             "category": "Airport Codes",
-            "img": "../images/greatfalls.jpg"
+            "img": "../assets/images/greatfalls.jpg"
           },
           {
             "question": "HLN",
             "answer": "Helena",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/helena.jpg"
+            "img": "../assets/images/helena.jpg"
           },
           {
             "question": "HNL",
             "answer": "Honolulu",
             "hint": "In fact, _ is the largest city in the world—if you're talking city borders. According to Hawaii's constitution, any island not named to a county, is considered part of Honolulu, making the city 1,500 miles lon",
             "category": "Airport Codes",
-            "img": "../images/honolulu.jpg"
+            "img": "../assets/images/honolulu.jpg"
           },
           {
             "question": "IAD",
             "answer": "Washington - Dulles",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/dulles.jpg"
+            "img": "../assets/images/dulles.jpg"
           },
           {
             "question": "IAH",
             "answer": "Houston",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/houston.jpg"
+            "img": "../assets/images/houston.jpg"
           },
           {
             "question": "IDA",
             "answer": "Idaho Falls",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/idahofalls.jpg"
+            "img": "../assets/images/idahofalls.jpg"
           },
           {
             "question": "JFK",
             "answer": "New York - JFK",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/jfk.jpg"
+            "img": "../assets/images/jfk.jpg"
           },
           {
             "question": "JNU",
             "answer": "Juneau",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/juneau.jpg"
+            "img": "../assets/images/juneau.jpg"
           },
           {
             "question": "KOA",
             "answer": "Kona",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/kona.jpg"
+            "img": "../assets/images/kona.jpg"
           },
           {
             "question": "KTN",
             "answer": "Ketchikan",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ketchikan.jpg"
+            "img": "../assets/images/ketchikan.jpg"
           },
           {
             "question": "LAP",
             "answer": "La Paz",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/lapaz.jpg"
+            "img": "../assets/images/lapaz.jpg"
           },
           {
             "question": "LAS",
             "answer": "Las Vegas",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/lasvegas.jpg"
+            "img": "../assets/images/lasvegas.jpg"
           },
           {
             "question": "LAX",
             "answer": "Los Angeles",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/lax.jpg"
+            "img": "../assets/images/lax.jpg"
           },
           {
             "question": "LGB",
             "answer": "Long Beach",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/longbeach.jpg"
+            "img": "../assets/images/longbeach.jpg"
           },
           {
             "question": "LIH",
             "answer": "Kauai",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/kauai.jpg"
+            "img": "../assets/images/kauai.jpg"
           },
           {
             "question": "LIR",
             "answer": "Liberia, Costa Rica",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/lir.jpg"
+            "img": "../assets/images/lir.jpg"
           },
           {
             "question": "LTO",
             "answer": "Loreto",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/lto.jpg"
+            "img": "../assets/images/lto.jpg"
           },
           {
             "question": "LWS",
             "answer": "Lewiston",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/lws.jpg"
+            "img": "../assets/images/lws.jpg"
           },
           {
             "question": "MCI",
             "answer": "Kansas City",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mci.jpg"
+            "img": "../assets/images/mci.jpg"
           },
           {
             "question": "MCO",
             "answer": "Orlando",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mco.jpg"
+            "img": "../assets/images/mco.jpg"
           },
           {
             "question": "MEX",
             "answer": "Mexico City",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mex.jpg"
+            "img": "../assets/images/mex.jpg"
           },
           {
             "question": "MFR",
             "answer": "Medford",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mfr.jpg"
+            "img": "../assets/images/mfr.jpg"
           },
           {
             "question": "MIA",
             "answer": "Miami",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mia.jpg"
+            "img": "../assets/images/mia.jpg"
           },
           {
             "question": "MMH",
             "answer": "Mammoth Lakes",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mmh.jpg"
+            "img": "../assets/images/mmh.jpg"
           },
           {
             "question": "MRY",
             "answer": "Monterey",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mry.jpg"
+            "img": "../assets/images/mry.jpg"
           },
           {
             "question": "MSO",
             "answer": "Missoula",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mso.jpg"
+            "img": "../assets/images/mso.jpg"
           },
           {
             "question": "MSP",
             "answer": "Minneapolis",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/msp.jpg"
+            "img": "../assets/images/msp.jpg"
           },
           {
             "question": "MSY",
             "answer": "New Orleans",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/msy.jpg"
+            "img": "../assets/images/msy.jpg"
           },
           {
             "question": "MZT",
             "answer": "Mazatlan",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mzt.jpg"
+            "img": "../assets/images/mzt.jpg"
           },
           {
             "question": "OAK",
             "answer": "Oakland",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/oak.jpg"
+            "img": "../assets/images/oak.jpg"
           },
           {
             "question": "OGG",
             "answer": "Maui",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ogg.jpg"
+            "img": "../assets/images/ogg.jpg"
           },
           {
             "question": "OKC",
             "answer": "Oklahoma City",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/okc.jpg"
+            "img": "../assets/images/okc.jpg"
           },
           {
             "question": "OMA",
             "answer": "Omaha",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/oma.jpg"
+            "img": "../assets/images/oma.jpg"
           },
           {
             "question": "OME",
             "answer": "Nome",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ome.jpg"
+            "img": "../assets/images/ome.jpg"
           },
           {
             "question": "ONT",
             "answer": "Ontario",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ont.jpg"
+            "img": "../assets/images/ont.jpg"
           },
           {
             "question": "ORD",
             "answer": "Chicago",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ord.jpg"
+            "img": "../assets/images/ord.jpg"
           },
           {
             "question": "OTZ",
             "answer": "Kotzebue",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/otz.jpg"
+            "img": "../assets/images/otz.jpg"
           },
           {
             "question": "PDX",
             "answer": "Portland",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/pdx.jpg"
+            "img": "../assets/images/pdx.jpg"
           },
           {
             "question": "PHL",
             "answer": "Philadelphia",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/phl.jpg"
+            "img": "../assets/images/phl.jpg"
           },
           {
             "question": "PHX",
             "answer": "Phoenix",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/phx.jpg"
+            "img": "../assets/images/phx.jpg"
           },
           {
             "question": "PRC",
             "answer": "Prescott",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/prc.jpg"
+            "img": "../assets/images/prc.jpg"
           },
           {
             "question": "PSC",
             "answer": "Pasco",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/psc.jpg"
+            "img": "../assets/images/psc.jpg"
           },
           {
             "question": "PSG",
             "answer": "Petersburg",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/psg.jpg"
+            "img": "../assets/images/psg.jpg"
           },
           {
             "question": "PSP",
             "answer": "Palm Springs",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/psp.jpg"
+            "img": "../assets/images/psp.jpg"
           },
           {
             "question": "PUW",
             "answer": "Pullman",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/puw.jpg"
+            "img": "../assets/images/puw.jpg"
           },
           {
             "question": "PVR",
             "answer": "Puerto Vallarta",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/pvr.jpg"
+            "img": "../assets/images/pvr.jpg"
           },
           {
             "question": "RDD",
             "answer": "Redding",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/rdd.jpg"
+            "img": "../assets/images/rdd.jpg"
           },
           {
             "question": "RDM",
             "answer": "Redmond",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/rdm.jpg"
+            "img": "../assets/images/rdm.jpg"
           },
           {
             "question": "RDU",
             "answer": "Raleigh-Durham",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/rdu.jpg"
+            "img": "../assets/images/rdu.jpg"
           },
           {
             "question": "RNO",
             "answer": "Reno",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/rno.jpg"
+            "img": "../assets/images/rno.jpg"
           },
           {
             "question": "SAN",
             "answer": "San Diego",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/san.jpg"
+            "img": "../assets/images/san.jpg"
           },
           {
             "question": "SAT",
             "answer": "San Antonio",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sat.jpg"
+            "img": "../assets/images/sat.jpg"
           },
           {
             "question": "SBA",
             "answer": "Santa Barbara",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sba.jpg"
+            "img": "../assets/images/sba.jpg"
           },
           {
             "question": "SCC",
             "answer": "Prudhoe Bay",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/scc.jpg"
+            "img": "../assets/images/scc.jpg"
           },
           {
             "question": "SEA",
             "answer": "Seattle",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sea.jpg"
+            "img": "../assets/images/sea.jpg"
           },
           {
             "question": "SFO",
             "answer": "San Francisco",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sfo.jpg"
+            "img": "../assets/images/sfo.jpg"
           },
           {
             "question": "SIT",
             "answer": "Sitka",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sit.jpg"
+            "img": "../assets/images/sit.jpg"
           },
           {
             "question": "SJC",
             "answer": "San Jose",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sjc.jpg"
+            "img": "../assets/images/sjc.jpg"
           },
           {
             "question": "SJD",
             "answer": "Los Cabos",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sjd.jpg"
+            "img": "../assets/images/sjd.jpg"
           },
           {
             "question": "SJO",
             "answer": "San Jose, Costa Rica",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sjo.jpg"
+            "img": "../assets/images/sjo.jpg"
           },
           {
             "question": "SLC",
             "answer": "Salt Lake City",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/slc.jpg"
+            "img": "../assets/images/slc.jpg"
           },
           {
             "question": "SMF",
             "answer": "Sacramento",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/smf.jpg"
+            "img": "../assets/images/smf.jpg"
           },
           {
             "question": "SNA",
             "answer": "Orange County",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sna.jpg"
+            "img": "../assets/images/sna.jpg"
           },
           {
             "question": "STL",
             "answer": "St Louis",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/stl.jpg"
+            "img": "../assets/images/stl.jpg"
           },
           {
             "question": "STS",
             "answer": "Santa Rosa",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sts.jpg"
+            "img": "../assets/images/sts.jpg"
           },
           {
             "question": "SUN",
             "answer": "Sun Valley",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sun.jpg"
+            "img": "../assets/images/sun.jpg"
           },
           {
             "question": "TPA",
             "answer": "Tampa",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/tpa.jpg"
+            "img": "../assets/images/tpa.jpg"
           },
           {
             "question": "TUS",
             "answer": "Tucson",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/tus.jpg"
+            "img": "../assets/images/tus.jpg"
           },
           {
             "question": "WRG",
             "answer": "Wrangell",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/wrg.jpg"
+            "img": "../assets/images/wrg.jpg"
           },
           {
             "question": "YAK",
             "answer": "Yakutat",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/yak.jpg"
+            "img": "../assets/images/yak.jpg"
           },
           {
             "question": "YEG",
             "answer": "Edmonton",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/yeg.jpg"
+            "img": "../assets/images/yeg.jpg"
           },
           {
             "question": "YKM",
             "answer": "Yakima",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ykm.jpg"
+            "img": "../assets/images/ykm.jpg"
           },
           {
             "question": "YLW",
             "answer": "Kelowna",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ylw.jpg"
+            "img": "../assets/images/ylw.jpg"
           },
           {
             "question": "YVR",
             "answer": "Vancouver",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/yvr.jpg"
+            "img": "../assets/images/yvr.jpg"
           },
           {
             "question": "YYC",
             "answer": "Calgary",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/yyc.jpg"
+            "img": "../assets/images/yyc.jpg"
           },
           {
             "question": "YYJ",
             "answer": "Victoria",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/yyj.jpg"
+            "img": "../assets/images/yyj.jpg"
           },
           {
             "question": "ZIH",
             "answer": "Ixtapa",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/zih.jpg"
+            "img": "../assets/images/zih.jpg"
           },
           {
             "question": "ZLO",
             "answer": "Manzanillo",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/zlo.jpg"
+            "img": "../assets/images/zlo.jpg"
           },
           {
             "question": "MIL",
             "answer": "Milwaukee",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/mil.jpg"
+            "img": "../assets/images/mil.jpg"
           },
           {
             "question": "HAV",
             "answer": "Havana",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/hav.jpg"
+            "img": "../assets/images/hav.jpg"
           },
           {
             "question": "ICT",
             "answer": "Wichita",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ict.jpg"
+            "img": "../assets/images/ict.jpg"
           },
           {
             "question": "IND",
             "answer": "Indianapolis",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/ind.jpg"
+            "img": "../assets/images/ind.jpg"
           },
           {
             "question": "SBP",
             "answer": "San Luis Obispo",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/sbp.jpg"
+            "img": "../assets/images/sbp.jpg"
           },
           {
             "question": "DAL",
             "answer": "Dallas - Love Field",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/dal.jpg"
+            "img": "../assets/images/dal.jpg"
           },
           {
             "question": "LGA",
             "answer": "New York - LaGuardia",
             "hint": "",
             "category": "Airport Codes",
-            "img": "../images/lga.jpg"
+            "img": "../assets/images/lga.jpg"
           }
 
 	]

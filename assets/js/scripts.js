@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var score = 0; // track user's score
 	var final = null; // end status
 	var random = false; // boolean for shuffling questions
+	var swap = 'this is swap';
 	// collection of text strings
 	var textStrings = {
 		'selectTopic' : 'Please select a topic.',
@@ -317,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	    		setTopicHeader(); // set topic name
 				setCategoryHeader(); // set category name
 				setImg();
-
+//hi
 				// if no category is chosen, proceed in with simple question asking
 				if (chosenCategory == 'All') {
 					// prefill question one from current topic data
@@ -389,7 +390,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// validate user answer
 	function checkAnswer(){
-		
+		// console.log('the value of swap, swap')
+		// if(swap == true){
+		// 	document.querySelector('.questionHolder').innerHTML = topicDataFilteredCategory[progressCounter]['question'];
+		// 	console.log('swap is first called so its true ')
+		// 	swap = false;
+		// }
+		// else{
+		// 	document.querySelector('.questionHolder').innerHTML = topicDataFilteredCategory[progressCounter]['answer'];
+		// 	console.log('swap is false')
+		// 	swap = true;
+		// }
 		var userAnswer = document.querySelector('#answerRow textarea').value;
 		var currentQuestion;
 		// if no category is specified
@@ -414,6 +425,9 @@ document.addEventListener('DOMContentLoaded', function(){
 					modalGenerator('Correct, the answer is <span class=\'correct\'>' + rightAnswer + '</span>', 'Continue');
 					document.getElementById("img").src = ""
 					progressCounter++;
+					
+				
+
 					//setImg();
 					score++; // increase score if correct
 				} else {
@@ -443,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			updateProgressCounter(); // This currently handles the end game scenario. Action here is kinda redundant (for now).
 		}
 	}
-
+	
 	// update progress and score
 	function updateProgressCounter() {
 		// if no category is specified
@@ -456,6 +470,8 @@ document.addEventListener('DOMContentLoaded', function(){
 					// console.log('new value for progressCounter: ' + progressCounter);
 					// set HTML content to new question value
 					document.querySelector('.questionHolder').innerHTML = topicData[topicPosition]['questions'][progressCounter]['question'];
+					//right here!!
+					setImg();
 					//console.log('this should be a new question',topicData[topicPosition]['questions'][progressCounter]['question']);
 					setProgressFieldValue(); // update progress display at top of page
 				}
