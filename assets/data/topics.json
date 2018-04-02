@@ -830,4 +830,123 @@
           }
 
 	]
-}]
+},
+{
+	"name":"Alaska Airlines - Airplane Fleet",
+	"description":"Test your airplane knowledge!",
+	"resources" : [{
+		"name" : "Learning Journal",
+		"description" : "Personal list of learning resources",
+		"link" : "https://github.com/gricha2380/learning-journal/edit/master/README.md"
+	}],
+	"questions": [
+		{
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-400",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-737-400.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-400 combi",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-737-400combi.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-400 freighter",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-737-400f.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-700",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-737-700.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-800",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-737-800.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-900",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-737-900.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-900er",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/Alaska-Airlines-Boeing-737-990ERWL.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Bombardier q400",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-q400.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Bombardier crj-700",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/aircraft680-crj-700.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Embraer 175",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/embraer-175-exterior.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Boeing 737-800 legacy",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/starliner.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Airbus A319-112",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/Airbus_A319-112,_Virgin_America_AN1387818.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Airbus A320-214",
+      "category" : "Airplane Quiz!",
+      "img": "http://farm4.static.flickr.com/3840/14426662231_0e9ceff416.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Airbus Airbus A320-214 (sharklet)",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/sharklet.jpg"
+    },
+    {
+			"question": "What plane is this one? Be specific!",
+			"hint" :"none",
+			"answer" : "Airbus Airbus A321 (neo)",
+      "category" : "Airplane Quiz!",
+      "img": "../assets/images/A321neo_CFM_VRD_V06-1280x640.jpg"
+    }
+    
+
+	]
+}
+]
