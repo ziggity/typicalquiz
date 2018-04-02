@@ -948,5 +948,131 @@
     
 
 	]
+},
+
+{
+	"name":"Alaska Airlines Trivia!",
+	"description":"Test your Alaska Airlines knowledge!",
+	"resources" : [{
+		"name" : "Learning Journal",
+		"description" : "Personal list of learning resources",
+		"link" : "https://github.com/gricha2380/learning-journal/edit/master/README.md"
+	}],
+	"questions": [
+		{
+			"question": "What rank in size in the US market is AS? Type 1-9",
+			"hint" :"none",
+			"answer" : "5",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What year was Alaska Airlines founded?",
+			"hint" :"none",
+			"answer" : "1932",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What's the NYSE symbol?'",
+			"hint" :"none",
+			"answer" : "ALK",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "Who's the CEO?",
+			"hint" :"none",
+			"answer" : "Brad D. Tilden",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What are the major hubs AS flies to?",
+			"hint" :"none",
+			"answer" : "Seattle, San Francisco, Los Angeles, Anchorage, Alaska; Portland, Oregon",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What's Alaska Airlines sister carrier?",
+			"hint" :"none",
+			"answer" : "Horizon Air",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "How many employees does Alaska Airlines have?",
+			"hint" :"none",
+			"answer" : "22,000",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "How many total destinations are there for Alaska Airlines?",
+			"hint" :"none",
+			"answer" : "115",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What are the avg daily flights for Alaska Airlines?!",
+			"hint" :"none",
+			"answer" : "957",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What's the total number of departures for Alaska Airlines?",
+			"hint" :"none",
+			"answer" : "321,900",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "Alaska Airlines Total passengers enplaned?",
+			"hint" :"none",
+			"answer" : "33 million",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "Total available seat miles?",
+			"hint" :"none",
+			"answer" : "44.4 billion",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "Total revenue passenger miles?",
+			"hint" :"none",
+			"answer" : "37.6 billion",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What was Alaska Airlines original name (circa 1932-1945)",
+			"hint" :"none",
+			"answer" : "McGee Airways",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What happenend in 1978 to allow Alaska Airlines to grow significatnly?",
+			"hint" :"none",
+			"answer" : "Airline Deregulation Act",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What year did Alaska Airlines start flying to Hawaii from San Jose, California and Sacramento?",
+			"hint" :"none",
+			"answer" : "2010",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "In 1986 Alaska Air Group acquired regional airline _",
+			"hint" :"none",
+			"answer" : "Horizon Air",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "What year did Southwest Airlines move into Pacific Northwest territory? Thus causing Alaska Air to make deep cuts to stay competitive, which caused flight attendents to strike",
+			"hint" :"none",
+			"answer" : "1993",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    },
+    {
+			"question": "Alaska Airlines also pioneered some new technologies through the 1990s which helped pilots navigate in foggy weather, what was it exactly?",
+			"hint" :"none",
+			"answer" : "heads-up guidance system",
+      "category" : "Alaska Airlines Trivia", "img": "../assets/images/alaska.jpg"
+    }
+	]
 }
 ]
