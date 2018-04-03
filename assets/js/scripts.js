@@ -677,6 +677,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	  // read from localStorage
 	  function readLocalStorage(itemName) {
+		console.log('window storage', JSON.parse(window.localStorage.getItem(itemName)))
 	    return JSON.parse(window.localStorage.getItem(itemName));
 	  }
 
